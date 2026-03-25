@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corre Patagotitan, corre - Versión 9.0 (EL DESPERTAR DEL VOLCÁN)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #game-container {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+            image-rendering: pixelated;
+            background-color: #000;
+            border-bottom: 4px solid #333;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 5;
+            visibility: hidden;
+        }
+
+        .roar-bar-container {
+            width: 120px;
+            height: 12px;
+            background: #222;
+            border: 2px solid #fff;
+            position: relative;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        #roar-fill {
+            width: 0%;
+            height: 100%;
+            background: #ff4400;
+            box-shadow: 0 0 10px #ff4400;
+            transition: width 0.1s;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 100;
+        }
+
+        #introScreen {
+            background: #000;
+        }
+
+        #messageScreen {
+            background: #000;
+            display: none;
+        }
+
+        #gameOver {
+            background: rgba(10, 0, 0, 0.95);
+            display: none;
+            padding: 20px;
+        }
+
+        #event-cinematic {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff4400;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 150;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 0px #000;
+            width: 80%;
+            line-height: 1.5;
+        }
+
+        .btn-action {
+            background: #ff4400;
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 4px 4px 0px #600;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .btn-action:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #300;
+        }
+
+        .trivia-container {
+            margin: 10px 0;
+            padding: 10px;
+            max-width: 700px;
+            color: #ffaa88;
+        }
+
+        #trivia-text {
+            font-size: 16px;
+            line-height: 1.5;
+            min-height: 60px;
+            display: block;
+        }
+
+        .pixel-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .pixel-btn:hover {
+            color: #ff4400;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container">
+        <div class="ui-overlay" id="uiOverlay">
+            <div class="power-container">
+                <div id="lives" style="display: flex; gap: 5px; margin-bottom: 5px;"></div>
+                <div class="roar-bar-container">
+                    <div id="roar-fill"></div>
+                </div>
+                <div style="font-size: 10px; color: #ff4400; margin-top: 4px;">TORMENTA DE FUEGO [ESPACIO]</div>
+            </div>
+            <div id="score" style="font-size: 20px; color: #fff;">0m</div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+        <div id="event-cinematic"></div>
+
+        <div class="screen" id="introScreen">
+            <h1 style="font-size: 42px; color: #ff4400; text-shadow: 4px 4px 0px #600;">PATAGOTITAN V9</h1>
+            <h2 style="font-size: 18px; letter-spacing: 4px; color: #aaa;">EL DESPERTAR DEL VOLCÁN</h2>
+            <div style="margin-top: 30px;">
+                <p style="color: #666; font-size: 14px;">↑ SALTAR / DOBLE SALTO | ↓ AGACHARSE | ESPACIO: PODER</p>
+                <button class="btn-action" onclick="iniciarTodo()">SOBREVIVIR</button>
+            </div>
+        </div>
+
+        <div class="screen" id="messageScreen">
+            <div id="typewriter-text"
+                style="font-size: 22px; max-width: 800px; padding: 40px; text-transform: uppercase;"></div>
+            <div id="countdown" style="font-size: 60px; font-weight: bold; color: #ff4400;"></div>
+        </div>
+
+        <div class="screen" id="gameOver">
+            <h1 style="color: #ff4400; font-size: 48px; margin: 0;">¡EXTINCIÓN!</h1>
+            <p id="finalDist" style="font-size: 24px; color: #aaa;"></p>
+            <div class="trivia-container">
+                <p id="trivia-text"></p>
+            </div>
+            <div style="display: flex; gap: 40px;">
+                <div class="pixel-btn" onclick="reiniciarJuego()">REINTENTAR</div>
+                <div class="pixel-btn" onclick="mostrarTrivia()">OTRO DATO</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURACIÓN MOTOR ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 1000; canvas.height = 350;
+
+        const GAME = {
+            activo: false, pausado: false, distancia: 0, fps: 0,
+            velocidad: 4.5, gravedad: 0.42,
+            faseLava: false, eventoVolcan: false,
+            shake: { x: 0, y: 0, intensity: 0 }
+        };
+
+        const Protagonista = {
+            x: 120, y: 210, baseSY: 210, velY: 0,
+            saltos: 0, agachado: false, alphaAg: 0,
+            inmune: 0, vidas: 3, poder: 0,
+            update() {
+                if (this.inmune > 0) this.inmune--;
+                this.alphaAg = this.agachado ? Math.min(1, this.alphaAg + 0.15) : Math.max(0, this.alphaAg - 0.15);
+
+                this.velY += GAME.gravedad; this.y += this.velY;
+
+                // Hitbox simplificada para lava (después de evento)
+                if (GAME.faseLava && this.y > 240) {
+                    if (this.inmune <= 0) {
+                        recibirDano();
+                        this.velY = -14; this.saltos = 1;
+                    } else if (this.y > 270) this.velY = -14;
+                }
+
+                let sActual = (GAME.faseLava) ? 500 : this.baseSY; // El suelo desaparece en fase lava excepto plataformas
+
+                // Chequear plataformas (Obstaculos)
+                let sobrePlat = false;
+                Obstaculos.forEach(o => {
+                    if (o.type === 'rock' && o.isPlatform) {
+                        if (this.x + 60 > o.x && this.x + 10 < o.x + o.w && this.velY >= 0 && this.y + 40 <= o.y + 10 && this.y + 40 >= o.y - 10) {
+                            sActual = o.y - 70; sobrePlat = true;
+                        }
+                    }
+                });
+
+                if (this.y >= sActual) {
+                    this.y = sActual; this.velY = 0; this.saltos = 0;
+                }
+            },
+            draw() {
+                if (this.inmune > 0 && Math.floor(GAME.fps / 4) % 2 === 0) return;
+                ctx.save();
+                ctx.translate(this.x + GAME.shake.x, this.y + GAME.shake.y);
+                ctx.scale(0.9, 0.9);
+
+                const c = "#fff";
+                const ag = this.alphaAg;
+
+                // Cuerpo
+                ctx.fillStyle = c;
+                ctx.fillRect(0, 10 - ag * 5, 120, 40); // Tronco
+                ctx.fillRect(10, -10, 80, 25); // Espalda
+
+                // Cola
+                ctx.fillRect(-80 - ag * 20, 20 - ag * 15, 80, 15);
+                ctx.fillRect(-130 - ag * 30, 30 - ag * 20, 55, 8);
+
+                // Piernas
+                const walk = Math.sin(GAME.fps * 0.15) * 10;
+                ctx.fillRect(10, 45, 15, 25 + (walk > 0 ? walk : 0));
+                ctx.fillRect(40, 45, 15, 25 + (walk < 0 ? -walk : 0));
+                ctx.fillRect(80, 45, 15, 30 + (walk > 0 ? walk : 0));
+                ctx.fillRect(105, 45, 15, 30 + (walk < 0 ? -walk : 0));
+
+                // Cuello y Cabeza
+                let nx = 110 + ag * 40, ny = -50 + ag * 60;
+                ctx.fillRect(90, -40 + ag * 50, 25, 50 - ag * 30); // Base cuello
+                ctx.fillRect(nx, ny, 40, 20); // Cabeza
+                ctx.fillRect(nx + 30, ny + 15, 15, 5); // Mandíbula
+
+                ctx.restore();
+            }
+        };
+
+        const Obstaculos = [];
+        class Roca {
+            constructor(x, platform = false) {
+                this.x = x; this.type = 'rock'; this.isPlatform = platform;
+                this.w = platform ? 200 + Math.random() * 150 : 50 + Math.random() * 40;
+                this.h = platform ? 40 : 50 + Math.random() * 30;
+                this.y = platform ? 220 + (Math.random() - 0.5) * 40 : 284 - this.h;
+                this.c = platform ? "#444" : "#666";
+            }
+            update() { this.x -= GAME.velocidad; }
+            draw() {
+                ctx.fillStyle = this.c;
+                ctx.fillRect(this.x + GAME.shake.x, this.y + GAME.shake.y, this.w, this.h);
+                ctx.fillStyle = "#fff";
+                ctx.fillRect(this.x + GAME.shake.x + 4, this.y + GAME.shake.y, this.w - 8, 4); // Borde brillante
+            }
+        }
+
+        class Meteorito {
+            constructor() {
+                this.x = canvas.width + Math.random() * 500;
+                this.y = -50; this.vx = -(GAME.velocidad + 2); this.vy = 4 + Math.random() * 3;
+                this.w = 30; this.h = 30; this.type = 'meteor';
+            }
+            update() { this.x += this.vx; this.y += this.vy; }
+            draw() {
+                ctx.fillStyle = "#ff4400";
+                ctx.fillRect(this.x + GAME.shake.x, this.y + GAME.shake.y, this.w, this.h);
+                ctx.fillStyle = "#fff";
+                ctx.fillRect(this.x + 5 + GAME.shake.x, this.y + 5 + GAME.shake.y, this.w - 10, this.h - 10);
+            }
+        }
+
+        // --- LÓGICA DE EVENTOS ---
+        function triggerVolcan() {
+            GAME.eventoVolcan = true;
+            const div = document.getElementById('event-cinematic');
+            div.style.display = 'block';
+            const text = "¡EL VOLCÁN HA EXPLOTADO! EL CONTINENTE SE DESBORDA DE LAVA...";
+            let i = 0; div.innerHTML = "";
+
+            function type() {
+                if (i < text.length) { div.innerHTML += text[i]; i++; setTimeout(type, 50); }
+                else {
+                    setTimeout(() => {
+                        div.style.display = 'none'; GAME.faseLava = true;
+                        GAME.velocidad += 1.5;
+                    }, 2000);
+                }
+            }
+            type();
+            reproducirExplosion();
+        }
+
+        function recibirDano() {
+            if (Protagonista.inmune > 0) return;
+            Protagonista.vidas--;
+            Protagonista.inmune = 100;
+            GAME.shake.intensity = 15;
+            actualizarVidasUI();
+            if (Protagonista.vidas <= 0) morir();
+        }
+
+        function morir() {
+            GAME.activo = false;
+            document.getElementById('gameOver').style.display = 'flex';
+            document.getElementById('finalDist').innerText = `DISTANCIA: ${Math.floor(GAME.distancia / 10)}m`;
+            mostrarTrivia();
+        }
+
+        function actualizarVidasUI() {
+            const container = document.getElementById('lives');
+            container.innerHTML = "";
+            for (let i = 0; i < 3; i++) {
+                container.innerHTML += `<div style="width:15px; height:15px; background:${i < Protagonista.vidas ? '#ff4400' : '#222'}; border:1px solid #fff;"></div>`;
+            }
+        }
+
+        // --- AUDIO ---
+        let audioCtx = null;
+        function playSfx(f, d, v = 0.1) {
+            if (!audioCtx) return;
+            const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
+            o.type = 'square'; o.frequency.setValueAtTime(f, audioCtx.currentTime);
+            g.gain.setValueAtTime(v, audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + d);
+            o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + d);
+        }
+        function reproducirExplosion() {
+            if (!audioCtx) return;
+            for (let i = 0; i < 5; i++) setTimeout(() => playSfx(40 + Math.random() * 40, 1.5, 0.4), i * 100);
+        }
+
+        // --- BUCLE PRINCIPAL ---
+        function loop() {
+            if (!GAME.activo || GAME.pausado) return;
+            GAME.fps++; GAME.distancia++;
+            const m = Math.floor(GAME.distancia / 10);
+            document.getElementById('score').innerText = `${m}m`;
+
+            // Efecto shake
+            if (GAME.shake.intensity > 0) {
+                GAME.shake.x = (Math.random() - 0.5) * GAME.shake.intensity;
+                GAME.shake.y = (Math.random() - 0.5) * GAME.shake.intensity;
+                GAME.shake.intensity *= 0.95;
+            } else { GAME.shake.x = 0; GAME.shake.y = 0; }
+
+            // Evento 100m
+            if (m === 100 && !GAME.eventoVolcan) triggerVolcan();
+
+            // Dibujar Fondo
+            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1000, 350);
+
+            // Volcán de fondo
+            ctx.fillStyle = GAME.faseLava ? "#400" : "#222";
+            ctx.beginPath(); ctx.moveTo(700, 300); ctx.lineTo(850, 50); ctx.lineTo(1000, 300); ctx.fill();
+            if (GAME.eventoVolcan) {
+                ctx.fillStyle = "#ff4400";
+                for (let i = 0; i < 10; i++) ctx.fillRect(800 + (Math.random() - 0.5) * 100, 50 + (Math.random() - 0.5) * 100, 10, 10);
+            }
+
+            // Suelo
+            if (!GAME.faseLava) {
+                ctx.fillStyle = "#333"; ctx.fillRect(0, 280, 1000, 70);
+            } else {
+                ctx.fillStyle = "#ff2200"; ctx.fillRect(0, 280, 1000, 70); // Magma
+                if (GAME.fps % 5 === 0) {
+                    ctx.fillStyle = "#fff"; ctx.fillRect(Math.random() * 1000, 285 + Math.random() * 60, 4, 4);
+                }
+            }
+
+            // Spawn Obstáculos
+            if (GAME.fps % 80 === 0) {
+                if (GAME.faseLava) {
+                    Obstaculos.push(new Roca(1100, true)); // Plataforma
+                } else {
+                    Obstaculos.push(new Roca(1100, false)); // Roca normal
+                }
+            }
+            if (GAME.eventoVolcan && GAME.fps % 120 === 0) Obstaculos.push(new Meteorito());
+
+            // Actualizar Obstáculos
+            for (let i = Obstaculos.length - 1; i >= 0; i--) {
+                const o = Obstaculos[i]; o.update(); o.draw();
+
+                // Colisiones
+                const hit = (o.type === 'rock' && !o.isPlatform) || o.type === 'meteor';
+                if (hit && Protagonista.inmune <= 0) {
+                    if (Protagonista.x < o.x + o.w && Protagonista.x + 80 > o.x && Protagonista.y < o.y + o.h && Protagonista.y + 70 > o.y) {
+                        recibirDano(); Obstaculos.splice(i, 1);
+                    }
+                }
+                if (o.x < -400) Obstaculos.splice(i, 1);
+            }
+
+            Protagonista.update(); Protagonista.draw();
+
+            // Poder UI
+            if (Protagonista.poder < 100) Protagonista.poder += 0.1;
+            document.getElementById('roar-fill').style.width = Protagonista.poder + "%";
+
+            requestAnimationFrame(loop);
+        }
+
+        // --- INTERFAZ / TRIVIA ---
+        const trivias = [
+            "Patagotitan comía pasto? ¡No! Las gramíneas apenas aparecían. Se alimentaba de coníferas gigantes.",
+            "La lava del Cretácico fluía por fracturas de miles de kilómetros cuando Gondwana se rompía.",
+            "Una erupción masiva en la Patagonia pudo haber causado extinciones locales antes del meteorito fatal.",
+            "El fémur del Patagotitan es tan grande que se necesita una camioneta entera para transportarlo."
+        ];
+        function mostrarTrivia() {
+            document.getElementById('trivia-text').innerText = trivias[Math.floor(Math.random() * trivias.length)];
+        }
+
+        function iniciarTodo() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            document.getElementById('introScreen').style.display = 'none';
+            document.getElementById('uiOverlay').style.visibility = 'visible';
+            GAME.activo = true; actualizarVidasUI(); loop();
+        }
+
+        function reiniciarJuego() {
+            GAME.distancia = 0; GAME.velocidad = 4.5; GAME.faseLava = false; GAME.eventoVolcan = false;
+            Protagonista.vidas = 3; Protagonista.y = 210; Protagonista.inmune = 0;
+            Obstaculos.length = 0;
+            document.getElementById('gameOver').style.display = 'none';
+            GAME.activo = true; actualizarVidasUI(); loop();
+        }
+
+        // --- CONTROLES ---
+        window.addEventListener('keydown', e => {
+            if (!GAME.activo) return;
+            if (e.code === 'ArrowUp' && Protagonista.saltos < 2) {
+                Protagonista.velY = -12; Protagonista.saltos++; playSfx(200, 0.1);
+            }
+            if (e.code === 'ArrowDown') Protagonista.agachado = true;
+            if (e.code === 'Space' && Protagonista.poder >= 100) {
+                Protagonista.poder = 0;
+                Obstaculos.filter(o => o.type !== 'rock' || !o.isPlatform).forEach((o, i) => {
+                    setTimeout(() => { Obstaculos.splice(Obstaculos.indexOf(o), 1); playSfx(600, 0.2); }, i * 50);
+                });
+            }
+        });
+        window.addEventListener('keyup', e => {
+            if (e.code === 'ArrowDown') Protagonista.agachado = false;
+        });
+
+    </script>
+</body>
+
+</html>

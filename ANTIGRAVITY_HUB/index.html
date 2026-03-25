@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTIGRAVITY | Central Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo-area">
+                <span class="logo-icon">🚀</span>
+                <h1>ANTIGRAVITY<span>HUB</span></h1>
+            </div>
+            <p class="tagline">Todos tus proyectos en un solo lugar</p>
+            
+            <div class="local-notice">
+                <span class="notice-icon">⚠️</span>
+                <p><strong>¿Algún mapa o juego no carga?</strong> <br>Ejecuta el archivo <code>ANTIGRAVITY_LAUNCHER.command</code> en la carpeta principal para iniciar el modo local optimizado.</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="projectSearch" placeholder="Buscar proyecto...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="project-grid" id="projectGrid">
+            <!-- Project cards injected dynamically by app.js -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ANTIGRAVITY HUB | Powering Science & Technology | Última act: <span id="last-sync-date">...</span></p>
+        </div>
+    </footer>
+
+    <script src="projects.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

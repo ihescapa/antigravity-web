@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="1" />
+    </filter>
+  </defs>
+  <!-- Color #C8B29C o #B9A48C para que se vea mas en el crema FCFAF9 pero sutil. Opacidad entre 0.4 y 0.5 -->
+  <g fill="none" stroke="#B9A48C" stroke-width="1.5" stroke-opacity="0.5">
+    <!-- Contour 1 -->
+    <path d="M-100,0 Q100,200 300,100 T700,50 T900,-50" />
+    <path d="M-100,50 Q100,250 300,150 T700,100 T900,0" />
+    <path d="M-100,100 Q100,300 300,200 T700,150 T900,50" />
+    
+    <!-- Contour 2 -->
+    <path d="M-50,400 Q150,550 450,400 T850,250" />
+    <path d="M-50,450 Q150,600 450,450 T850,300" />
+    <path d="M-50,500 Q150,650 450,500 T850,350" />
+    
+    <!-- Contour 3 circular/hill -->
+    <circle cx="600" cy="650" r="50" />
+    <circle cx="600" cy="650" r="80" />
+    <circle cx="600" cy="650" r="110" />
+    <circle cx="600" cy="650" r="140" />
+
+    <!-- Contour 4 circular/hill -->
+    <circle cx="100" cy="700" r="30" />
+    <circle cx="100" cy="700" r="70" />
+    <circle cx="100" cy="700" r="110" />
+    
+    <!-- Mixed paths -->
+    <path d="M300,-100 C 400,200 600,0 800,200" />
+    <path d="M250,-100 C 350,250 550,50 750,250" />
+    <path d="M200,-100 C 300,300 500,100 700,300" />
+    
+    <!-- Filler curves -->
+    <path d="M0,800 Q 200,600 400,800" />
+    <path d="M0,750 Q 200,550 450,800" />
+    <path d="M0,700 Q 200,500 500,800" />
+    <path d="M800,800 Q 600,500 800,400" />
+    <path d="M800,750 Q 650,500 800,350" />
+  </g>
+</svg>

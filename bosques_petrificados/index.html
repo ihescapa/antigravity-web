@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de Bosques Petrificados — Chubut</title>
+    <meta name="description"
+        content="Herramienta paleobotánica para detectar y analizar sitios candidatos a contener madera petrificada en la provincia de Chubut, Patagonia Argentina." />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <span class="logo-icon">🪨</span>
+                <div>
+                    <h1 class="logo-title">Bosques Petrificados</h1>
+                    <p class="logo-sub">Detector satelital — Chubut, Patagonia</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="badge badge-sentinel">Sentinel-2</span>
+                <span class="badge badge-gee">Google Earth Engine</span>
+                <span class="badge badge-paleo">Paleobotánica</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <main class="layout">
+
+        <!-- PANEL LATERAL IZQUIERDO -->
+        <aside class="sidebar" id="sidebar">
+
+            <section class="panel">
+                <h2 class="panel-title">
+                    <span class="panel-icon">⚙️</span> Filtros de candidatos
+                </h2>
+
+                <div class="filter-group">
+                    <label class="filter-label" for="score-min">
+                        Score mínimo de probabilidad
+                        <span class="filter-value" id="score-min-val">30</span>
+                    </label>
+                    <input type="range" id="score-min" min="0" max="90" value="30" class="slider" />
+                    <div class="slider-labels">
+                        <span>Bajo (0)</span><span>Alto (90)</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label" for="area-min">
+                        Área mínima del parche (m²)
+                        <span class="filter-value" id="area-min-val">900</span>
+                    </label>
+                    <input type="range" id="area-min" min="0" max="10000" step="900" value="900" class="slider" />
+                    <div class="slider-labels">
+                        <span>1 píxel</span><span>>10m²</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Formaciones geológicas</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="form-check" value="Grupo Sarmiento" checked />
+                            <span>Grupo Sarmiento</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="form-check" value="Fm. Laguna del Hunco" checked />
+                            <span>Fm. Laguna del Hunco</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="form-check" value="Fm. Florentino Ameghino" checked />
+                            <span>Fm. Florentino Ameghino</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="form-check" value="Grupo Chubut" checked />
+                            <span>Grupo Chubut</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="form-check" value="Pendiente verificación campo" checked />
+                            <span>Sin clasificar (GEE)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="btn-apply" onclick="applyFilters()">
+                    Aplicar filtros
+                </button>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-title">
+                    <span class="panel-icon">📁</span> Cargar datos GEE
+                </h2>
+                <p class="panel-desc">Cargá el GeoJSON exportado desde Google Earth Engine:</p>
+                <div class="upload-zone" id="upload-zone">
+                    <div class="upload-icon">📂</div>
+                    <p>Arrastrá el archivo <code>.geojson</code> aquí<br />o hacé click para seleccionar</p>
+                    <input type="file" id="file-input" accept=".geojson,.json" style="display:none" />
+                </div>
+                <div class="hint-box">
+                    <strong>💡 Sin datos GEE todavía?</strong><br />
+                    Se cargaron los sitios conocidos de Chubut como referencia.
+                    <a href="README.md" target="_blank">Ver instrucciones GEE →</a>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-title">
+                    <span class="panel-icon">📊</span> Estadísticas
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-total">0</div>
+                        <div class="stat-label">Candidatos totales</div>
+                    </div>
+                    <div class="stat-card stat-card--high">
+                        <div class="stat-number" id="stat-high">0</div>
+                        <div class="stat-label">Score &gt; 60</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-visible">0</div>
+                        <div class="stat-label">Visibles (filtros)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-area">—</div>
+                        <div class="stat-label">Área media (m²)</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-title">
+                    <span class="panel-icon">💾</span> Exportar
+                </h2>
+                <div class="export-btns">
+                    <button class="btn btn-export" onclick="exportKMZ()" id="btn-kmz">
+                        📍 Exportar KMZ (GPS)
+                    </button>
+                    <button class="btn btn-export" onclick="exportCSV()" id="btn-csv">
+                        📋 Exportar CSV
+                    </button>
+                </div>
+                <p class="panel-desc">El KMZ puede abrirse con Google Earth o cualquier GPS de campo.</p>
+            </section>
+
+        </aside>
+
+        <!-- MAPA -->
+        <div class="map-container">
+            <div id="map"></div>
+
+            <!-- Controles sobre el mapa -->
+            <div class="map-controls">
+                <button class="map-btn" id="btn-basemap-sat" onclick="setBasemap('satellite')"
+                    title="Mapa satelital">🛰️</button>
+                <button class="map-btn" id="btn-basemap-topo" onclick="setBasemap('topo')"
+                    title="Topográfico">🗺️</button>
+                <button class="map-btn" id="btn-basemap-geo" onclick="setBasemap('geo')"
+                    title="Geológico (OSM)">🪨</button>
+                <div class="map-btn-divider"></div>
+                <button class="map-btn" onclick="fitToData()" title="Centrar en datos">⊙</button>
+            </div>
+
+            <!-- Leyenda del mapa -->
+            <div class="map-legend" id="map-legend">
+                <div class="legend-title">Score de probabilidad</div>
+                <div class="legend-row"><span class="legend-dot" style="background:#ff2200"></span> Muy alto (>70)</div>
+                <div class="legend-row"><span class="legend-dot" style="background:#ff9900"></span> Alto (50-70)</div>
+                <div class="legend-row"><span class="legend-dot" style="background:#ffee00"></span> Medio (30-50)</div>
+                <div class="legend-row"><span class="legend-dot" style="background:#88ccff"></span> Bajo (&lt;30)</div>
+                <div class="legend-row"><span class="legend-dot legend-dot--ref" style="background:#00ff88"></span>
+                    Sitio conocido</div>
+            </div>
+
+            <!-- Panel de detalle de punto seleccionado -->
+            <div class="detail-panel" id="detail-panel" style="display:none">
+                <div class="detail-header">
+                    <h3 class="detail-title" id="detail-title">Candidato</h3>
+                    <button class="detail-close" onclick="closeDetail()">✕</button>
+                </div>
+                <div class="detail-body" id="detail-body"></div>
+                <div class="detail-actions">
+                    <button class="btn btn-sm" id="btn-copy-coords" onclick="copyCoords()">📋 Copiar coords</button>
+                    <a class="btn btn-sm" id="btn-open-gearth" href="#" target="_blank">🌍 Abrir en Google Earth</a>
+                    <a class="btn btn-sm" id="btn-open-sentinel" href="#" target="_blank">🛰️ Ver en Copernicus</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

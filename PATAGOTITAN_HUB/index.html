@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patagotitan Project Hub — La Flecha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --accent-gold: #c2a15e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 90%;
+            padding: 40px 0;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h2 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-gold);
+            color: #000;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link {
+            margin-top: 40px;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="subtitle">Ecosistema</span>
+        <h1>Patagotitan Project</h1>
+    </div>
+
+    <div class="grid">
+        <a href="juego_principal/index.html" class="card">
+            <span class="icon">🦖</span>
+            <h2>Juego Principal</h2>
+            <p>La versión completa con música, misiones y desafíos de supervivencia en el Cretácico.</p>
+            <span class="btn">Ingresar</span>
+        </a>
+
+        <a href="juego_standalone/index.html" class="card">
+            <span class="icon">🏜️</span>
+            <h2>Versión Standalone</h2>
+            <p>Edición optimizada y directa para una experiencia de juego rápida sin extras.</p>
+            <span class="btn">Ingresar</span>
+        </a>
+
+        <a href="libreta_aventura/index.html" class="card">
+            <span class="icon">📓</span>
+            <h2>Libreta de Aventura</h2>
+            <p>Acompaña al Dr. Raspón en una expedición interactiva para recuperar los secretos del Patagotitan.</p>
+            <span class="btn">Ingresar</span>
+        </a>
+    </div>
+
+    <a href="../ANTIGRAVITY_HUB/index.html" class="back-link">← Volver al Hub Central</a>
+</body>
+</html>

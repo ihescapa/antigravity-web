@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Detective Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles"></div>
+
+    <div id="game-container">
+        <!-- Pantalla de Inicio -->
+        <div id="start-screen" class="screen active">
+            <div class="logo-container">
+                <div class="magnifying-glass emoji-anim">🕵️‍♀️</div>
+                <h1 class="detective-title">AGENCIA DE MISTERIOS<br>MATEMÁTICOS</h1>
+            </div>
+            
+            <p class="subtitle typewriter-intro">Solo para agentes ultra secretos...</p>
+            
+            <div class="mission-menu folder-bg">
+                <div class="menu-grid">
+                    <button class="btn btn-folder" data-mission="builder">
+                        <span class="folder-icon">🧩</span>
+                        CASO 1: ORDENAR LAS PISTAS<br><small>(Cuentas y Ecuaciones)</small>
+                    </button>
+                    <button class="btn btn-folder" data-mission="approx">
+                        <span class="folder-icon">⏱️</span>
+                        CASO 2: ESTIMACIÓN RÁPIDA<br><small>(Sentido Numérico)</small>
+                    </button>
+                    <button class="btn btn-folder" data-mission="collector">
+                        <span class="folder-icon">🔦</span>
+                        CASO 3: DETECTOR DE MENTIRAS<br><small>(Filtrar Textos Largos)</small>
+                    </button>
+                    <button class="btn btn-folder" data-mission="sequence">
+                        <span class="folder-icon">🔓</span>
+                        CASO 4: LA CAJA FUERTE<br><small>(Patrones y Lógica)</small>
+                    </button>
+                </div>
+            </div>
+            <div class="top-secret-stamp rotate-anim">TOP SECRET</div>
+        </div>
+
+        <!-- Pantalla de Juego -->
+        <div id="game-screen" class="screen">
+            <div class="header">
+                <div class="score-display">
+                    🏆 GANADOS: <span id="score-wins" class="score-number win-text">0</span> | 
+                    ❌ PERDIDOS: <span id="score-losses" class="score-number lose-text">0</span>
+                </div>
+                <button id="btn-back" class="btn btn-small">VOLVER</button>
+            </div>
+            
+            <div class="case-presentation">
+                <div id="mission-icon" class="floating-emoji">🔍</div>
+                <h2 id="mission-title">EXPEDIENTE ACTUAL</h2>
+            </div>
+
+            <!-- Manilla Folder Base -->
+            <div class="folder pixel-box">
+                <div class="folder-tab">CASO #<span id="case-id">901</span></div>
+                <div class="typewriter-text" id="problem-text">Cargando expediente...</div>
+                
+                <!-- Mechanic 1: Builder -->
+                <div id="mechanic-builder" class="mechanic-container hidden">
+                    <div class="mechanic-header">Toca las pistas para pasarlas al tablero y armar la cuenta correcta:</div>
+                    <div id="builder-pool" class="box-area"></div>
+                    <div class="equation-container">
+                        <div id="builder-solution" class="box-area dropzone"></div>
+                        <div class="equation-line">?</div>
+                    </div>
+                </div>
+
+                <!-- Mechanic 2: Approx -->
+                <div id="mechanic-approx" class="mechanic-container hidden">
+                    <div class="mechanic-header">¿Qué respuesta tiene más sentido sin usar calculadora?</div>
+                    <div id="approx-options" class="options-grid"></div>
+                </div>
+
+                <!-- Mechanic 3: Collector -->
+                <div id="mechanic-collector" class="mechanic-container hidden">
+                    <div class="mechanic-header">Haz click para encender SÓLO los números verdaderamente útiles:</div>
+                    <div id="collector-text" class="selectable-text"></div>
+                </div>
+
+                <!-- Mechanic 4: Sequence -->
+                <div id="mechanic-sequence" class="mechanic-container hidden">
+                    <div class="mechanic-header">Descubre el patrón para abrir la caja fuerte:</div>
+                    <div id="sequence-display" class="sequence-grid"></div>
+                    <input type="number" id="sequence-input" class="pixel-input" placeholder="Tu respuesta...">
+                </div>
+
+            </div>
+
+            <div class="input-area">
+                <button id="btn-submit" class="btn btn-primary btn-solve">
+                    <span class="emoji bounce-anim">🚨</span> ¡RESOLVER CASO!
+                </button>
+            </div>
+            
+            <div id="feedback-message" class="feedback"></div>
+        </div>
+
+        <!-- Modal de Victoria -->
+        <div id="success-modal" class="modal hidden">
+            <div class="modal-content file-card win-bg">
+                <div class="stamp-approved">CASO RESUELTO</div>
+                <h1 class="huge-title result-win-text">¡GANASTE!</h1>
+                <h2 class="modal-title">¡Excelente deducción, Detective!</h2>
+                <div class="reward-section">
+                    <div class="reward-title">DATO TOP SECRET #<span id="fact-id"></span></div>
+                    <div class="fact-icon floating-anim">💡</div>
+                    <p id="science-fact" class="fact-text">Cargando...</p>
+                </div>
+                <button id="btn-next-case" class="btn btn-primary btn-large glow-effect">CONTINUAR MISIÓN ➔</button>
+            </div>
+        </div>
+        
+        <!-- Modal de Derrota Corto -->
+        <div id="error-modal" class="modal hidden">
+            <div class="modal-content file-card error-bg">
+                <div class="stamp-denied">CASO FALLIDO</div>
+                <h1 class="huge-title result-lose-text">¡PERDISTE!</h1>
+                <h2 class="modal-title" style="color:red">Esa no era la respuesta.</h2>
+                <p id="error-explanation" class="fact-text">Cargando explicación...</p>
+                <button id="btn-retry-case" class="btn btn-large" style="background:#555; margin-top:20px; color:white;">REINTENTAR ESTE CASO ➔</button>
+            </div>
+        </div>
+
+        <div id="flash-overlay"></div>
+    </div>
+    
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

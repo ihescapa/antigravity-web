@@ -1,0 +1,690 @@
+/* ============================================================
+   BOSQUES PETRIFICADOS — Chubut, Patagonia
+   Estilos principales
+   ============================================================ */
+
+/* -- Tokens -------------------------------------------------- */
+:root {
+    --bg: #0a0c10;
+    --bg2: #111318;
+    --bg3: #1a1d25;
+    --border: #252932;
+    --text: #e8eaf0;
+    --text-muted: #7a8090;
+    --accent: #ff6b2b;
+    --accent2: #ffaa44;
+    --green: #22dd77;
+    --blue: #5599ff;
+    --red: #ff3355;
+    --yellow: #ffee00;
+
+    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --transition: 0.2s ease;
+
+    --sidebar-w: 340px;
+    --header-h: 58px;
+}
+
+/* -- Reset & Base -------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* -- Header -------------------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-h);
+    background: rgba(10, 12, 16, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 12px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 26px;
+}
+
+.logo-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    line-height: 1;
+}
+
+.logo-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    font-family: 'Space Mono', monospace;
+}
+
+.header-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-sentinel {
+    background: rgba(85, 153, 255, 0.15);
+    color: var(--blue);
+    border: 1px solid rgba(85, 153, 255, 0.3);
+}
+
+.badge-gee {
+    background: rgba(255, 107, 43, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(255, 107, 43, 0.3);
+}
+
+.badge-paleo {
+    background: rgba(34, 221, 119, 0.12);
+    color: var(--green);
+    border: 1px solid rgba(34, 221, 119, 0.3);
+}
+
+/* -- Layout -------------------------------------------------- */
+.layout {
+    display: flex;
+    height: 100vh;
+    padding-top: var(--header-h);
+}
+
+/* -- Sidebar ------------------------------------------------- */
+.sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    max-width: var(--sidebar-w);
+    height: 100%;
+    overflow-y: auto;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    padding: 16px 14px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+/* -- Panels -------------------------------------------------- */
+.panel {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+}
+
+.panel-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.panel-icon {
+    font-size: 14px;
+}
+
+.panel-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* -- Filters ------------------------------------------------- */
+.filter-group {
+    margin-bottom: 18px;
+}
+
+.filter-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.filter-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(255, 107, 43, 0.12);
+    padding: 2px 7px;
+    border-radius: 4px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 107, 43, 0.5);
+    transition: var(--transition);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 14px rgba(255, 107, 43, 0.7);
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* -- Checkboxes --------------------------------------------- */
+.checkbox-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.checkbox-item input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+/* -- Buttons ------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-primary {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    margin-top: 4px;
+}
+
+.btn-primary:hover {
+    background: var(--accent2);
+    box-shadow: 0 0 20px rgba(255, 107, 43, 0.4);
+}
+
+.btn-export {
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.btn-export:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-sm {
+    font-size: 11px;
+    padding: 6px 12px;
+    background: var(--bg3);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-sm:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.export-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+/* -- Upload Zone -------------------------------------------- */
+.upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 10px;
+}
+
+.upload-zone:hover,
+.upload-zone.drag-over {
+    border-color: var(--accent);
+    background: rgba(255, 107, 43, 0.05);
+}
+
+.upload-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.upload-zone p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.upload-zone code {
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+}
+
+.hint-box {
+    background: rgba(85, 153, 255, 0.07);
+    border: 1px solid rgba(85, 153, 255, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.hint-box a {
+    color: var(--blue);
+}
+
+.hint-box strong {
+    color: var(--text);
+}
+
+/* -- Stats --------------------------------------------------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    text-align: center;
+}
+
+.stat-card--high {
+    border-color: rgba(255, 107, 43, 0.4);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* -- Map ---------------------------------------------------- */
+.map-container {
+    position: relative;
+    flex: 1;
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background: #0d1117;
+}
+
+/* -- Map controls ------------------------------------------ */
+.map-controls {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.map-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(10, 12, 16, 0.9);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+}
+
+.map-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.map-btn.active {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+}
+
+.map-btn-divider {
+    height: 1px;
+    background: var(--border);
+}
+
+/* -- Legend ------------------------------------------------- */
+.map-legend {
+    position: absolute;
+    bottom: 30px;
+    right: 14px;
+    z-index: 500;
+    background: rgba(10, 12, 16, 0.9);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    backdrop-filter: blur(12px);
+    min-width: 170px;
+}
+
+.legend-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.legend-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.legend-dot--ref {
+    border-radius: 2px;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid #ffffff44;
+}
+
+/* -- Detail Panel ------------------------------------------ */
+.detail-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 700;
+    background: rgba(10, 12, 16, 0.96);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    padding: 16px 20px 18px;
+    animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.detail-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.detail-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.detail-close:hover {
+    color: var(--text);
+    background: var(--bg3);
+}
+
+.detail-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px 20px;
+    margin-bottom: 14px;
+    font-size: 12px;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.detail-field .df-label {
+    color: var(--text-muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-field .df-value {
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+}
+
+.detail-field .df-value.high {
+    color: var(--red);
+}
+
+.detail-field .df-value.medium {
+    color: var(--yellow);
+}
+
+.detail-field .df-value.low {
+    color: var(--blue);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* -- Leaflet overrides -------------------------------------- */
+.leaflet-popup-content-wrapper {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.leaflet-popup-tip {
+    background: var(--bg3);
+}
+
+.leaflet-popup-content {
+    margin: 10px 14px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.leaflet-control-zoom {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+.leaflet-control-zoom a {
+    background: rgba(10, 12, 16, 0.9) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--accent) !important;
+    color: #000 !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(10, 12, 16, 0.7) !important;
+    color: var(--text-muted) !important;
+    font-size: 9px !important;
+}
+
+/* -- Score indicator on markers -- */
+.marker-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* -- Scrollbar global --------------------------------------- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}

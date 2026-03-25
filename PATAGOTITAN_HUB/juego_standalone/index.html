@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corre Patagotitan, corre - Versión 4.0 (Edición Científica Final)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .content-section {
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #game-container {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+            image-rendering: pixelated;
+            background-color: #000;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 5;
+            visibility: hidden;
+        }
+
+        .lives-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .power-container {
+            margin-top: 5px;
+        }
+
+        .roar-bar-container {
+            width: 120px;
+            height: 10px;
+            background: #222;
+            border: 2px solid #fff;
+            position: relative;
+            margin-top: 5px;
+        }
+
+        #roar-fill {
+            width: 0%;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: 0 0 8px #ffffff;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 100;
+        }
+
+        #introScreen {
+            background: #050505;
+        }
+
+        #messageScreen {
+            background: #000;
+            display: none;
+        }
+
+        #gameOver {
+            background: rgba(0, 0, 0, 0.98);
+            display: none;
+            padding: 20px;
+        }
+
+        .btn-action {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 4px 4px 0px #444;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .btn-action:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #222;
+        }
+
+        .btn-secondary {
+            background: #444;
+            color: #fff;
+            box-shadow: 4px 4px 0px #222;
+        }
+
+        .message-text {
+            font-size: 20px;
+            padding: 0 60px;
+            line-height: 1.6;
+            max-width: 800px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #eee;
+        }
+
+        #countdown-display {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            display: none;
+        }
+
+        .trivia-container {
+            margin: 20px 0;
+            padding: 25px;
+            border: 2px dashed #ffccff;
+            background: rgba(255, 204, 255, 0.05);
+            max-width: 650px;
+            color: #ffccff;
+            text-align: center;
+        }
+
+        .trivia-title {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        #trivia-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-section">
+        <h1 style="font-size: 24px; letter-spacing: 4px; text-transform: uppercase;">PATAGOTITAN adventure</h1>
+    </div>
+
+    <div id="game-container">
+        <div class="ui-overlay" id="uiOverlay">
+            <div class="power-container">
+                <div class="lives-container" id="lives"></div>
+                <div class="roar-bar-container">
+                    <div id="roar-fill"></div>
+                </div>
+                <div style="font-size: 9px; margin-top: 2px; text-transform: uppercase;">Tormenta de Flores [R]</div>
+            </div>
+            <div id="score">DISTANCIA: 0m</div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="screen" id="introScreen">
+            <h1 style="font-size: 38px; margin-bottom: 10px;">CORRE PATAGOTITAN, CORRE</h1>
+            <p style="color: #666; font-size: 14px;">FLECHAS: MOVER | ESPACIO: SALTAR | R: TORMENTA FLORAL</p>
+            <button class="btn-action" onclick="showStory()">COMENZAR</button>
+        </div>
+
+        <div class="screen" id="messageScreen">
+            <div id="typewriter-text" class="message-text"></div>
+            <div id="countdown-display"></div>
+        </div>
+
+        <div class="screen" id="gameOver">
+            <h2 style="font-size: 32px; margin-bottom: 5px; color: #ff4444;">¡EXTINCIÓN!</h2>
+            <p id="finalScore" style="color: #aaa; margin-bottom: 10px;"></p>
+
+            <div class="trivia-container">
+                <span class="trivia-title">UN dato chiquito sobre un dino gigante...</span>
+                <span id="trivia-text"></span>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <button class="btn-action" onclick="resetGame()">Jugar de nuevo</button>
+                <button class="btn-action btn-secondary" onclick="showAnotherTrivia()">Quiero saber más. ¿Me das otro
+                    datito?</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const uiOverlay = document.getElementById('uiOverlay');
+        const scoreElement = document.getElementById('score');
+        const livesElement = document.getElementById('lives');
+        const roarFill = document.getElementById('roar-fill');
+        const gameOverScreen = document.getElementById('gameOver');
+        const introScreen = document.getElementById('introScreen');
+        const messageScreen = document.getElementById('messageScreen');
+        const typewriterElement = document.getElementById('typewriter-text');
+        const countdownElement = document.getElementById('countdown-display');
+        const finalScoreElement = document.getElementById('finalScore');
+        const triviaTextDisplay = document.getElementById('trivia-text');
+
+        canvas.width = 1000;
+        canvas.height = 350;
+
+        // --- DATOS CIENTÍFICOS REALES ---
+        const triviaList = [
+            "Junto a Patagotitan se utilizaron más de 150 km de papel higiénico para proteger sus huesos durante la extracción. ¡Fue la momia más suave del mundo!",
+            "Junto a Patagotitan crecía la Patagoflora minima, una flor de menos de 1 cm de diámetro. ¡El gigante la habría pisado sin darse cuenta!",
+            "Junto a Patagotitan se hallaron 60 dientes de carnívoros. Parece que su colosal cuerpo muerto fue un banquete para los Tyrannotitan de la zona.",
+            "Patagotitan tenía un fémur de 2,4 metros. Es más alto que cualquier jugador de básquet de la NBA. ¡Inalcanzable!",
+            "Patagotitan pesaba unas 57 toneladas, lo mismo que 10 elefantes africanos juntos. ¡Un verdadero terremoto con patas!",
+            "Junto a Patagotitan se hallaron restos de al menos seis individuos. Eran jóvenes adultos que solían viajar juntos por la Estancia La Flecha.",
+            "Patagotitan tenía vértebras llenas de cavidades de aire, como las aves modernas. Sin este esqueleto 'neumático', ¡su propio peso lo habría aplastado!",
+            "Junto a Patagotitan se encontraron tocones de Austrocupressinoxylon, cipreses antiguos que podían clonarse a sí mismos para sobrevivir a los volcanes.",
+            "Patagotitan vivió hace 101,6 millones de años en un ambiente tropical de llanuras de inundación, muy distinto a la estepa árida de la Patagonia actual.",
+            "Patagotitan es tan largo (37 metros) que si lo estacionaras en la calle, ¡ocuparía casi media cuadra entera de tu barrio!"
+        ];
+
+        // --- ESTADO DEL JUEGO ---
+        let gameActive = false;
+        let score = 0;
+        let initialGameSpeed = 3.5;
+        let gameSpeed = initialGameSpeed;
+        let frameCount = 0;
+        const pSize = 4;
+        let lastAcceleratedMeter = -1;
+        let lives = 3;
+        let invincibilityFrames = 0;
+        let powerEnergy = 0;
+        let flowerStormFrames = 0;
+
+        const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false, Space: false, KeyR: false };
+
+        // --- AUDIO ---
+        let audioCtx = null;
+        let nextNoteTime = 0;
+        let noteIndex = 0;
+        const melody = [164.81, 164.81, 196.00, 220.00, 164.81, 164.81, 246.94, 220.00, 164.81, 164.81, 196.00, 220.00, 246.94, 293.66, 329.63, 246.94];
+
+        function play8BitNote(freq, duration, type = 'square', volume = 0.05) {
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(); osc.stop(audioCtx.currentTime + duration);
+            } catch (e) { }
+        }
+
+        function playJumpSound() { play8BitNote(160, 0.25, 'triangle', 0.15); }
+        function playDuckSound() { play8BitNote(200, 0.2, 'sawtooth', 0.08); }
+        function playFlowerSound() { play8BitNote(440, 0.4, 'sine', 0.1); play8BitNote(880, 0.3, 'sine', 0.05); }
+        function playHitSound() { play8BitNote(60, 0.4, 'sawtooth', 0.25); }
+        function playTypewriterSound() { play8BitNote(1100 + Math.random() * 500, 0.02, 'sine', 0.01); }
+
+        function playEruptionSound() {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(35, now);
+            osc.frequency.exponentialRampToValueAtTime(10, now + 1.2);
+            gain.gain.setValueAtTime(0.4, now);
+            gain.gain.linearRampToValueAtTime(0, now + 1.2);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(now + 1.2);
+        }
+
+        function updateMusic() {
+            if (!gameActive || !audioCtx) return;
+            const tempo = 1.8 / gameSpeed;
+            if (audioCtx.currentTime > nextNoteTime) {
+                const freq = melody[noteIndex % melody.length];
+                play8BitNote(freq, tempo * 0.6, 'square', 0.02);
+                if (noteIndex % 2 === 0) play8BitNote(freq / 2, tempo * 1.2, 'triangle', 0.04);
+                nextNoteTime = audioCtx.currentTime + tempo;
+                noteIndex++;
+            }
+        }
+
+        // --- UI LIVES (Pixel Art) ---
+        function updateLivesUI() {
+            livesElement.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const isFull = i < lives;
+                livesElement.innerHTML += `<svg width="24" height="24" viewBox="0 0 10 10" style="opacity: ${isFull ? 1 : 0.15}">
+                    <rect x="1" y="2" width="2" height="2" fill="#000"/>
+                    <rect x="4" y="2" width="2" height="2" fill="#000"/>
+                    <rect x="7" y="2" width="2" height="2" fill="#000"/>
+                    <rect x="0" y="3" width="10" height="4" fill="#000"/>
+                    <rect x="1" y="7" width="8" height="1" fill="#000"/>
+                    <rect x="2" y="8" width="6" height="1" fill="#000"/>
+                    <rect x="4" y="9" width="2" height="1" fill="#000"/>
+                    <rect x="2" y="3" width="2" height="1" fill="#ff4444"/>
+                    <rect x="6" y="3" width="2" height="1" fill="#ff4444"/>
+                    <rect x="1" y="4" width="8" height="3" fill="#ff4444"/>
+                    <rect x="2" y="7" width="6" height="1" fill="#ff4444"/>
+                    <rect x="3" y="8" width="4" height="1" fill="#ff4444"/>
+                </svg>`;
+            }
+        }
+
+        // --- SISTEMA DE TEMAS ---
+        // bg siempre negro para integrarse en web oscura.
+        // Los elementos cambian de color para crear contraste distinto en cada etapa.
+        const themes = [
+            { bg: '#000000', fg: '#ffffff', accent: '#2a2a2a', world: '#1a1a1a', layer2: '#111111' }, // Blanco puro
+            { bg: '#000000', fg: '#ffcc33', accent: '#3a2800', world: '#1e1600', layer2: '#140f00' }, // Ámbar volcánico
+            { bg: '#000000', fg: '#00e5cc', accent: '#003830', world: '#001a17', layer2: '#001210' }, // Cian glacial
+            { bg: '#000000', fg: '#ff4466', accent: '#330011', world: '#1a0008', layer2: '#110005' }, // Carmesí erupción
+            { bg: '#000000', fg: '#cc88ff', accent: '#220033', world: '#110018', layer2: '#0a000f' }  // Violeta nocturno
+        ];
+        let currentTheme = 0;
+
+        let isErupting = false;
+        let eruptionParticles = [];
+        let worldParticles = [];
+        let flowerParticles = [];
+        let screenShake = { x: 0, y: 0 };
+
+        function drawPixelRect(x, y, w, h, color = null, alpha = 1) {
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = color || themes[currentTheme].fg;
+            ctx.fillRect(Math.round(x + screenShake.x), Math.round(y + screenShake.y), Math.round(w), Math.round(h));
+            ctx.globalAlpha = 1;
+        }
+
+        // --- ASSETS Y PARALAJE ---
+        const cloudTypes = [[[0, 0, 40, 8], [10, -8, 20, 8]], [[0, 0, 60, 8], [8, -8, 44, 8], [20, -16, 20, 8]]];
+        const clouds = Array.from({ length: 6 }, () => ({ x: Math.random() * canvas.width, y: 20 + Math.random() * 80, type: Math.floor(Math.random() * cloudTypes.length), speed: 0.1 + Math.random() * 0.15 }));
+        const araucarias = Array.from({ length: 5 }, () => ({ x: Math.random() * canvas.width, height: 130 + Math.random() * 50, speed: 0.4 + Math.random() * 0.2 }));
+        const foregroundFerns = Array.from({ length: 8 }, () => ({ x: Math.random() * canvas.width, size: 22 + Math.random() * 15, speed: 2.2 + Math.random() * 0.6 }));
+
+        const player = {
+            x: 100, y: 200, groundY: 200, vy: 0, gravity: 0.38, jumpCount: 0, isJumping: false, isDucking: false, duckLerp: 0, jumpStrength: -11.5, impactTimer: 0, currentGroundY: 200, moveSpeed: 3.5,
+            draw() {
+                if (invincibilityFrames > 0 && Math.floor(frameCount / 4) % 2 === 0) return;
+                const bx = this.x; const by = this.y + (this.impactTimer > 0 ? 4 : 0);
+                const walkCycle = (frameCount * 0.12) % 4;
+                const bodyBob = this.isJumping ? 0 : (walkCycle < 2 ? 0 : pSize);
+                const tailLift = this.duckLerp * 18;
+
+                drawPixelRect(bx - 55, by + 20 - bodyBob - tailLift * 0.5, 48, 20);
+                drawPixelRect(bx - 95, by + 26 - bodyBob - tailLift * 1.0, 40, 14);
+                drawPixelRect(bx - 130, by + 32 - bodyBob - tailLift * 1.5, 35, 8);
+
+                let legs = [0, 0, 0, 0];
+                if (this.isJumping) legs = [8, 8, 8, 8];
+                else if (this.impactTimer > 0) legs = [0, 0, 0, 0];
+                else {
+                    const phase = Math.floor(walkCycle);
+                    if (phase === 0) legs = [0, 6, 0, 4]; if (phase === 1) legs = [6, 0, 4, 0]; if (phase === 2) legs = [0, 6, 0, 4]; if (phase === 3) legs = [6, 0, 4, 0];
+                }
+                drawPixelRect(bx + 10, by + 45 + legs[0], 12, 28); drawPixelRect(bx + 30, by + 45 + legs[1], 12, 28); drawPixelRect(bx + 65, by + 45 + legs[2], 12, 28); drawPixelRect(bx + 85, by + 45 + legs[3], 12, 28);
+                drawPixelRect(bx - 15, by + 10 - bodyBob, 125, 40); drawPixelRect(bx + 10, by - bodyBob, 80, 10);
+                drawPixelRect(bx + 20, by + 15 - bodyBob, 10, 15, themes[currentTheme].accent); drawPixelRect(bx + 50, by + 12 - bodyBob, 12, 20, themes[currentTheme].accent);
+                const neckW = 20 + (this.duckLerp * 45); const neckH = 45 * (1 - this.duckLerp) + 14 * this.duckLerp;
+                drawPixelRect(bx + 80, by - bodyBob - 5, 25, 25);
+                drawPixelRect(bx + 85 + (this.duckLerp * 15), (by - 30 - bodyBob) * (1 - this.duckLerp) + (by + 15 - bodyBob) * this.duckLerp, neckW, neckH);
+                if (this.duckLerp > 0.5) { drawPixelRect(bx + 170, by + 12 - bodyBob, 26, 18); drawPixelRect(bx + 175, by + 30 - bodyBob, 14, 4); }
+                else { const headY = by - 90 - bodyBob; drawPixelRect(bx + 90, headY, 34, 18); drawPixelRect(bx + 108, headY + 18, 14, 4); drawPixelRect(bx + 92, headY + 18, 14, 45); }
+            },
+            update() {
+                if (this.impactTimer > 0) this.impactTimer--;
+                if (invincibilityFrames > 0) invincibilityFrames--;
+                if (flowerStormFrames > 0) flowerStormFrames--;
+                if (powerEnergy < 100) powerEnergy += 0.1;
+                roarFill.style.width = powerEnergy + "%";
+
+                this.duckLerp = this.isDucking ? Math.min(1, this.duckLerp + 0.1) : Math.max(0, this.duckLerp - 0.1);
+                if (gameActive) {
+                    if (keys.ArrowLeft) this.x -= this.moveSpeed; if (keys.ArrowRight) this.x += this.moveSpeed;
+                    this.x = Math.max(50, Math.min(this.x, canvas.width / 2));
+                }
+                this.vy += this.gravity; this.y += this.vy;
+                if (this.y >= this.currentGroundY) {
+                    if (this.isJumping) { this.impactTimer = 8; for (let i = 0; i < 6; i++) createWorldParticle(this.x + 50, this.currentGroundY + 80, themes[currentTheme].fg, (Math.random() - 0.5) * 12, -Math.random() * 6); }
+                    this.y = this.currentGroundY; this.vy = 0; this.isJumping = false; this.jumpCount = 0;
+                }
+                this.currentGroundY = this.groundY;
+            }
+        };
+
+        const obstacles = [];
+        function createWorldParticle(x, y, color, vx, vy) { worldParticles.push({ x, y, vx, vy, color, life: 25 }); }
+
+        function spawnFlower() {
+            flowerParticles.push({
+                x: player.x + 80, y: player.y + 20 - Math.random() * 200,
+                vx: 14 + Math.random() * 6, vy: (Math.random() - 0.5) * 6,
+                life: 70
+            });
+        }
+
+        class Platform {
+            constructor() { this.x = canvas.width + 100; this.w = 180 + Math.random() * 100; this.h = 24; this.y = player.groundY + 60; this.type = 'platform'; this.hasPlant = Math.random() > 0.5; }
+            draw() {
+                const theme = themes[currentTheme];
+                drawPixelRect(this.x, this.y, this.w, this.h, theme.world);
+                drawPixelRect(this.x + 4, this.y, this.w - 8, 4, theme.fg);
+                if (this.hasPlant) {
+                    const tx = this.x + this.w / 2 - 20, ty = this.y - 44;
+                    drawPixelRect(tx + 18, ty + 20, 4, 24); drawPixelRect(tx + 4, ty + 15, 12, 4); drawPixelRect(tx + 24, ty + 15, 12, 4); drawPixelRect(tx + 10, ty + 5, 20, 4); drawPixelRect(tx + 14, ty - 5, 12, 4);
+                }
+            }
+            update() { this.x -= gameSpeed; }
+        }
+
+        class Meteor {
+            constructor() { this.w = 40; this.h = 40; this.x = canvas.width + 100; this.y = player.groundY - 85; this.speedX = -(gameSpeed + 4); this.trail = []; this.type = 'meteor'; }
+            draw() {
+                const theme = themes[currentTheme];
+                this.trail.forEach((t, i) => drawPixelRect(t.x + 12, t.y + 12, 16, 16, theme.accent, (i / this.trail.length) * 0.4));
+                drawPixelRect(this.x + 8, this.y, 24, 40); drawPixelRect(this.x, this.y + 8, 40, 24); drawPixelRect(this.x + 4, this.y + 4, 32, 32); drawPixelRect(this.x + 12, this.y + 12, 16, 16, theme.world);
+            }
+            update() { this.x -= gameSpeed + 1.5; this.trail.push({ x: this.x, y: this.y }); if (this.trail.length > 15) this.trail.shift(); }
+        }
+
+        class Plant {
+            constructor() { this.x = canvas.width + 100; this.variant = Math.random() > 0.6 ? 'tall' : 'short'; this.w = 40; this.h = this.variant === 'tall' ? 64 : 44; this.y = player.groundY + 84 - this.h; this.type = 'plant'; }
+            draw() {
+                const tx = this.x, ty = this.y, th = this.h;
+                drawPixelRect(tx + 18, ty + 20, 4, th - 20); drawPixelRect(tx + 4, ty + 15, 12, 4); drawPixelRect(tx + 24, ty + 15, 12, 4); drawPixelRect(tx + 10, ty + 5, 20, 4); drawPixelRect(tx + 14, ty - 5, 12, 4);
+                if (this.variant === 'tall') drawPixelRect(tx + 18, ty - 15, 4, 10);
+            }
+            update() { this.x -= gameSpeed; }
+        }
+
+        function drawWorld() {
+            const theme = themes[currentTheme];
+            ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            clouds.forEach(c => { c.x -= c.speed; if (c.x < -100) c.x = canvas.width + 100; cloudTypes[c.type].forEach(p => drawPixelRect(c.x + p[0], c.y + p[1], p[2], p[3], theme.world, 0.2)); });
+
+            araucarias.forEach(a => {
+                a.x -= a.speed * (gameSpeed / 7); if (a.x < -100) a.x = canvas.width + 100;
+                const ax = a.x, ay = player.groundY + 84;
+                drawPixelRect(ax, ay - a.height, 14, a.height, theme.layer2);
+                for (let i = 0; i < 6; i++) {
+                    const bw = 60 - i * 10, rY = ay - a.height + (i * 24);
+                    drawPixelRect(ax - bw / 2 + 7, rY, bw, 6, theme.layer2);
+                }
+            });
+
+            const vx = canvas.width - 280, vy = player.groundY + 84;
+            for (let i = 0; i < 9; i++) drawPixelRect(vx - (340 - i * 38) / 2 + 140, vy - (i + 1) * 22, (340 - i * 38), 22, theme.accent);
+
+            if (isErupting) {
+                if (frameCount % 2 === 0) eruptionParticles.push({ x: vx + 140, y: vy - 190, vx: (Math.random() - 0.5) * 15, vy: -Math.random() * 20, life: 30 });
+                screenShake = { x: (Math.random() - 0.5) * 12, y: (Math.random() - 0.5) * 12 };
+            } else screenShake = { x: 0, y: 0 };
+
+            for (let i = eruptionParticles.length - 1; i >= 0; i--) { const p = eruptionParticles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.8; p.life--; drawPixelRect(p.x, p.y, 8, 8, theme.fg); if (p.life <= 0) eruptionParticles.splice(i, 1); }
+            for (let i = worldParticles.length - 1; i >= 0; i--) { const p = worldParticles[i]; p.x += p.vx; p.y += p.vy; p.life--; drawPixelRect(p.x, p.y, 4, 4, p.color, p.life / 25); if (p.life <= 0) worldParticles.splice(i, 1); }
+
+            foregroundFerns.forEach(f => {
+                f.x -= f.speed * (gameSpeed / 4); if (f.x < -50) f.x = canvas.width + 50;
+                drawPixelRect(f.x, player.groundY + 84 - f.size, f.size, f.size / 3, theme.world, 0.4);
+            });
+
+            for (let i = 0; i < canvas.width + 80; i += 40) drawPixelRect(i - (Math.floor(frameCount * gameSpeed) % 40), player.groundY + 84, 15, 4, theme.world);
+        }
+
+        function showStory() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            introScreen.style.display = 'none';
+            messageScreen.style.display = 'flex';
+            const fullText = "hace 100 millones de años, en la Estancia La Flecha (Patagonia, Argentina) Patagotitan intenta sobrevivir";
+            let charIndex = 0; typewriterElement.innerHTML = "";
+            function typeChar() {
+                if (charIndex < fullText.length) {
+                    typewriterElement.innerHTML += fullText[charIndex];
+                    if (fullText[charIndex] !== " ") playTypewriterSound();
+                    charIndex++; setTimeout(typeChar, 45);
+                } else { setTimeout(() => { typewriterElement.style.transition = "opacity 1s"; typewriterElement.style.opacity = "0"; setTimeout(startCountdown, 1000); }, 1500); }
+            }
+            typeChar();
+        }
+
+        function startCountdown() {
+            typewriterElement.style.display = "none"; countdownElement.style.display = "block";
+            let count = 3; countdownElement.innerHTML = `A CORRER EN ${count}...`;
+            const interval = setInterval(() => {
+                count--;
+                if (count > 0) { countdownElement.innerHTML = `A CORRER EN ${count}...`; play8BitNote(440, 0.1, 'sine', 0.05); }
+                else { clearInterval(interval); countdownElement.innerHTML = "¡YA!"; play8BitNote(880, 0.2, 'sine', 0.05); setTimeout(startGame, 500); }
+            }, 1000);
+        }
+
+        function startGame() { messageScreen.style.display = 'none'; uiOverlay.style.visibility = "visible"; updateLivesUI(); gameActive = true; nextNoteTime = audioCtx.currentTime; gameLoop(); }
+
+        function showAnotherTrivia() {
+            triviaTextDisplay.innerText = triviaList[Math.floor(Math.random() * triviaList.length)];
+            play8BitNote(600, 0.1, 'sine', 0.03);
+        }
+
+        function gameLoop() {
+            if (!gameActive) return;
+            frameCount++; score++;
+            const meters = Math.floor(score / 10);
+            scoreElement.innerText = `DISTANCIA: ${meters}m`;
+            updateMusic();
+            const cyclePos = score % 1000;
+            if (cyclePos >= 960 || (cyclePos >= 0 && cyclePos <= 40)) { if (!isErupting) playEruptionSound(); isErupting = true; } else isErupting = false;
+            if (meters > 0 && meters % 100 === 0 && meters !== lastAcceleratedMeter) { lastAcceleratedMeter = meters; currentTheme = Math.floor(Math.random() * themes.length); gameSpeed += 0.3; }
+
+            drawWorld(); player.update(); player.draw();
+
+            if (flowerStormFrames > 0) { if (frameCount % 2 === 0) spawnFlower(); }
+            for (let i = flowerParticles.length - 1; i >= 0; i--) {
+                const f = flowerParticles[i]; f.x += f.vx; f.y += f.vy; f.life--;
+                const fc = "#ffccff";
+                drawPixelRect(f.x, f.y, 4, 4, fc);
+                drawPixelRect(f.x, f.y - 6, 4, 4, fc); drawPixelRect(f.x - 6, f.y - 2, 4, 4, fc); drawPixelRect(f.x + 6, f.y - 2, 4, 4, fc); drawPixelRect(f.x - 4, f.y + 6, 4, 4, fc); drawPixelRect(f.x + 4, f.y + 6, 4, 4, fc);
+                for (let j = obstacles.length - 1; j >= 0; j--) {
+                    const o = obstacles[j];
+                    const ox = o.x, oy = o.y || 200;
+                    if (Math.abs(ox - f.x) < 50 && Math.abs(oy - f.y) < 80) {
+                        createWorldParticle(ox, oy, fc, 0, -5); obstacles.splice(j, 1);
+                    }
+                }
+                if (f.life <= 0 || f.x > canvas.width) flowerParticles.splice(i, 1);
+            }
+
+            const spawnRate = Math.max(35, 80 - (gameSpeed * 2.5));
+            const lastObstacle = obstacles[obstacles.length - 1];
+            if ((!lastObstacle || (canvas.width - lastObstacle.x > 320)) && frameCount % Math.floor(spawnRate) === 0 && Math.random() > 0.4) {
+                const r = Math.random(); if (r < 0.2) obstacles.push(new Platform()); else if (r < 0.7) obstacles.push(new Plant()); else obstacles.push(new Meteor());
+            }
+
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const o = obstacles[i]; o.update(); o.draw();
+                if (o.type === 'platform' && player.x + 60 > o.x && player.x < o.x + o.w && player.vy >= 0 && player.y + 45 <= o.y + 10) player.currentGroundY = o.y - 70;
+                const pBody = { x: player.x - 5, y: player.y + 15, w: 105, h: 45 };
+                const pNeck = player.duckLerp > 0.5 ? { x: player.x + 100, y: player.y + 15, w: 90, h: 20 } : { x: player.x + 85, y: player.y - 90, w: 35, h: 100 };
+                let oBox = (o.type === 'platform') ? (o.hasPlant ? { x: o.x + o.w / 2 - 20, y: o.y - 44, w: 40, h: 44 } : null) : { x: o.x + 8, y: o.y + 8, w: o.w - 16, h: o.h - 16 };
+                const collide = (r1, r2) => (r1 && r2 && r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.y + r1.h > r2.y);
+                if (invincibilityFrames <= 0 && (collide(pBody, oBox) || collide(pNeck, oBox))) {
+                    lives--; updateLivesUI(); playHitSound();
+                    if (lives <= 0) {
+                        gameActive = false;
+                        gameOverScreen.style.display = 'flex';
+                        finalScoreElement.innerText = `RECORRISTE: ${meters} METROS`;
+                        showAnotherTrivia();
+                    }
+                    else { invincibilityFrames = 90; obstacles.splice(i, 1); }
+                }
+                if (o.x < -300) obstacles.splice(i, 1);
+            }
+            requestAnimationFrame(gameLoop);
+        }
+
+        function resetGame() { score = 0; gameSpeed = initialGameSpeed; obstacles.length = 0; eruptionParticles = []; worldParticles = []; flowerParticles = []; gameActive = true; lives = 3; invincibilityFrames = 0; powerEnergy = 0; player.y = player.groundY; player.x = 100; player.isJumping = false; player.isDucking = false; player.jumpCount = 0; player.impactTimer = 0; player.duckLerp = 0; currentTheme = 0; isErupting = false; lastAcceleratedMeter = -1; updateLivesUI(); gameOverScreen.style.display = 'none'; gameLoop(); }
+
+        window.addEventListener('keydown', (e) => {
+            if (!gameActive) return;
+            if (keys.hasOwnProperty(e.code)) keys[e.code] = true;
+            if (e.code === 'ArrowUp' || e.code === 'Space') { if (player.jumpCount < 2) { player.isJumping = true; player.vy = player.jumpStrength; player.jumpCount++; player.impactTimer = 0; player.isDucking = false; playJumpSound(); } }
+            if (e.code === 'ArrowDown') { player.isDucking = true; playDuckSound(); }
+            if ((e.code === 'KeyR' || e.shiftKey) && powerEnergy >= 100) { powerEnergy = 0; flowerStormFrames = 80; playFlowerSound(); }
+        });
+        window.addEventListener('keyup', (e) => { if (keys.hasOwnProperty(e.code)) keys[e.code] = false; if (e.code === 'ArrowDown') player.isDucking = false; });
+
+        drawWorld(); player.draw();
+    </script>
+</body>
+
+</html>

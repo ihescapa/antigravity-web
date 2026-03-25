@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Libreta de Aventura - MEF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        /* ================= VARIABLES GLOBALES ================= */
+        :root {
+            --bg-desk: #1e272e;
+            --paper-color: #f5eedc;
+            --ink-mef: #2f3640;
+            --ink-raspon: #0652DD;
+            --accent: #e15f41;
+            --leather: #8d4925;
+        }
+
+        body {
+            background-color: var(--bg-desk);
+            background-image: 
+                radial-gradient(circle at center, #2f3640 0%, #1e272e 100%),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+            font-family: 'Special Elite', monospace;
+            color: var(--ink-mef);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 30px 10px;
+            overflow-x: hidden;
+            touch-action: pan-y;
+        }
+
+        /* ================= DISEÑO DE LA LIBRETA REALISTA ================= */
+        .libreta {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 5px 15px 15px 5px;
+            box-shadow: 
+                20px 20px 40px rgba(0,0,0,0.5), 
+                inset -5px 0 20px rgba(0,0,0,0.05);
+            padding: 40px 30px 40px 60px;
+            position: relative;
+            background-image: 
+                linear-gradient(90deg, transparent 50px, #e1d8c1 50px, #e1d8c1 52px, transparent 52px),
+                repeating-linear-gradient(transparent, transparent 29px, rgba(0,0,0,0.03) 29px, rgba(0,0,0,0.03) 30px);
+            min-height: 80vh;
+        }
+
+        .libreta::before {
+            content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 35px;
+            background: linear-gradient(to right, #5c2c16, var(--leather), #5c2c16);
+            border-radius: 5px 0 0 5px;
+            box-shadow: inset -2px 0 5px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        .libreta::after {
+            content: ''; position: absolute; top: 0; left: 20px; bottom: 0; width: 25px;
+            background-image: 
+                radial-gradient(circle at 10px 15px, #1e272e 6px, transparent 7px),
+                linear-gradient(to right, #95a5a6 2px, #bdc3c7 4px, #7f8c8d 6px, transparent 6px);
+            background-size: 100% 30px, 100% 30px;
+            background-position: 0 0, 10px 0;
+            background-repeat: repeat-y;
+            z-index: 6;
+        }
+
+        .cinta-marcador {
+            position: absolute; top: -10px; right: 50px; width: 30px; height: 80px;
+            background: #c0392b; border-radius: 0 0 5px 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3); z-index: 1;
+        }
+
+        /* ================= TIPOGRAFÍAS Y ANIMACIONES ================= */
+        .voz-mef { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; font-weight: bold; color: #2d3436; }
+        .typing-cursor::after { content: '█'; animation: blink 0.8s infinite; color: #7f8c8d; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .voz-raspon {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem; color: var(--ink-raspon); line-height: 1.2;
+            margin: 15px 0; transform: rotate(-1.5deg);
+            opacity: 0; animation: bocetoAparece 0.5s ease-out forwards;
+        }
+        @keyframes bocetoAparece { from { opacity: 0; transform: scale(0.95) rotate(0deg); } to { opacity: 1; transform: scale(1) rotate(-1.5deg); } }
+
+        /* ================= BOTONES ================= */
+        .btn-dibujo {
+            border: 3px solid var(--ink-mef);
+            border-radius: 3px 15px 5px 20px / 15px 5px 20px 3px;
+            background: rgba(0,0,0,0.02);
+            padding: 12px 25px; font-family: 'Special Elite'; font-size: 1.2rem; font-weight: bold;
+            cursor: pointer; position: relative; overflow: hidden; transition: 0.2s;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-dibujo:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px rgba(0,0,0,0); }
+        .btn-dibujo:hover { background: rgba(0,0,0,0.06); }
+
+        .particle { position: fixed; pointer-events: none; border-radius: 50%; z-index: 9999; animation: pop 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards; }
+        @keyframes pop { 0% { transform: scale(1) translate(0, 0); opacity: 1; } 100% { transform: scale(0) translate(var(--dx), var(--dy)); opacity: 0; } }
+
+        /* ================= JUEGOS ESPECÍFICOS ================= */
+        .juego-caja { border: 2px dashed #a4b0be; border-radius: 8px; padding: 20px; margin: 25px 0; background: rgba(255,255,255,0.6); position: relative; }
+
+        /* J1: Radar */
+        #mapa-radar { width: 100%; height: 250px; border: 2px solid var(--ink-mef); border-radius: 8px; position: relative; cursor: crosshair; background: #dfe4ea; overflow: hidden; display: flex; align-items: center; justify-content: center;}
+        .radar-sweep { position: absolute; top: 50%; left: 50%; width: 150%; height: 2px; background: linear-gradient(90deg, transparent 50%, rgba(46, 204, 113, 0.8) 100%); transform-origin: left center; animation: spin 4s linear infinite; pointer-events: none; z-index: 2;}
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .ping-exito { position: absolute; width: 40px; height: 40px; border: 3px solid #2ecc71; border-radius: 50%; transform: translate(-50%, -50%); animation: pingWin 1s infinite; pointer-events: none; z-index: 3;}
+        @keyframes pingWin { 0% { width: 0; height: 0; opacity: 1; } 100% { width: 40px; height: 40px; opacity: 0; } }
+
+        /* J2: Excavación Estratigráfica (ZARPADA) */
+        #contenedor-mapa-real {
+            position: relative; width: 100%; min-height: 220px;
+            background: #000; border-radius: 8px; overflow: hidden;
+            border: 4px solid var(--ink-mef); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        #el-mapa-real {
+            position: absolute; inset: 0;
+            background-image: url('image_0e02a4.png');
+            background-size: cover; background-repeat: no-repeat; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out;
+        }
+        #canvas-excavacion {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            cursor: crosshair; touch-action: none; z-index: 10;
+        }
+        
+        /* Pines de Estratos (Colores del mapa) */
+        .pin-estrato {
+            position: absolute; width: 24px; height: 24px; border-radius: 50%;
+            transform: translate(-50%, -50%); cursor: pointer; z-index: 20;
+            box-shadow: 0 0 0 rgba(255,255,255, 0.4);
+            animation: pulsePin 1.5s infinite; transition: 0.3s;
+        }
+        .pin-estrato:hover { transform: translate(-50%, -50%) scale(1.3); }
+        .pin-naranja { background: #e65100; border: 3px solid white; }
+        .pin-verde { background: #4caf50; border: 3px solid white; }
+        .pin-amarillo { background: #ffeb3b; border: 3px solid white; }
+        .pin-analizado { animation: none; opacity: 0.4; filter: grayscale(1); pointer-events: none; }
+        
+        @keyframes pulsePin {
+            0% { box-shadow: 0 0 0 0 rgba(255,255,255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255,255,255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,255,255, 0); }
+        }
+
+        /* Resto de Juegos... */
+        .medidor-peso { width: 100%; height: 20px; border: 2px solid var(--ink-mef); border-radius: 10px; background: #eee; overflow: hidden; margin-top: 15px; position: relative;}
+        .medidor-fill { height: 100%; background: #e67e22; width: 0%; transition: width 0.3s ease; }
+        #balanza { width: 100%; height: 6px; background: var(--ink-mef); position: relative; transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform: rotate(-18deg); margin-top: 80px;}
+        #pivote { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 25px solid var(--ink-mef); margin: 0 auto; }
+        .plato { position: absolute; top: -5px; width: 80px; height: 6px; background: var(--ink-mef); }
+        .peso-elefante { font-size: 1.8rem; position: absolute; animation: drop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        #caja-dientes { width: 100%; height: 280px; border: 2px dashed var(--ink-mef); position: relative; overflow: hidden; background: #f1f2f6; border-radius: 8px;}
+        .diente { position: absolute; cursor: pointer; width: 45px; height: 45px; transition: transform 0.1s; z-index: 5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));}
+        .diente:hover { transform: scale(1.15); }
+        .diente-click-area { position: absolute; inset: -10px; z-index: 6; } /* Increased hit area */
+        .humo { position: absolute; width: 50px; height: 50px; background: radial-gradient(circle, #ccc 20%, transparent 70%); border-radius: 50%; opacity: 0.8; animation: fadeHumo 0.4s forwards; pointer-events: none;}
+        @keyframes fadeHumo { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+        /* Pulse for correct teeth */
+        .diente-carnivoro { animation: pulseCarnivoro 2s infinite ease-in-out; }
+        @keyframes pulseCarnivoro { 0%, 100% { filter: drop-shadow(0 0 2px #e74c3c); } 50% { filter: drop-shadow(0 0 10px #e74c3c); } }
+
+        body.uv-mode { --bg-desk: #050505; --paper-color: #121212; --ink-mef: #576574; --ink-raspon: #00f2fe; }
+        #uv-container { width: 100%; height: 280px; position: relative; border: 4px solid var(--ink-mef); overflow: hidden; background: #000; touch-action: none; border-radius: 8px;}
+        #uv-bosque { position: absolute; inset: 0; background: #0b1c0b; z-index: 10; -webkit-mask-image: radial-gradient(circle 70px at var(--mouse-x, -100%) var(--mouse-y, -100%), black 50%, transparent 100%); mask-image: radial-gradient(circle 70px at var(--mouse-x, -100%) var(--mouse-y, -100%), black 50%, transparent 100%); }
+        .huella-uv { position: absolute; font-size: 2rem; color: transparent; text-shadow: 0 0 10px #00f2fe; opacity: 0.5; z-index: 8; }
+
+        .alerta-sismo { animation: redAlert 0.5s infinite; }
+        @keyframes redAlert { 0%, 100% { box-shadow: inset 0 0 0 rgba(231, 76, 60, 0); } 50% { box-shadow: inset 0 0 50px rgba(231, 76, 60, 0.4); } }
+        .temblor-fuerte { animation: sismoShake 0.1s infinite; }
+        @keyframes sismoShake { 0% { transform: translate(2px, 1px) rotate(0deg); } 25% { transform: translate(-1px, -2px) rotate(-1deg); } 50% { transform: translate(-3px, 0px) rotate(1deg); } 75% { transform: translate(3px, 2px) rotate(0deg); } 100% { transform: translate(1px, -1px) rotate(-1deg); } }
+
+        /* MENÚ INFORME FLOTANTE */
+        .fab { position: fixed; bottom: 20px; right: 20px; width: 65px; height: 65px; border-radius: 50%; background: #f1c40f; border: 3px solid #f39c12; color: #2c3e50; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 100; transition: 0.2s; }
+        .fab:hover { transform: scale(1.1) rotate(5deg); }
+        .fab.alerta { animation: fabPulse 1s infinite; background: #e74c3c; border-color: #c0392b; color: white; }
+        @keyframes fabPulse { 0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(231, 76, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); } }
+        
+        #panel-informe { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100%; background: #fffdf7; box-shadow: -15px 0 40px rgba(0,0,0,0.6); z-index: 200; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1); padding: 50px 40px; overflow-y: auto; font-family: 'Caveat', cursive; font-size: 1.6rem; line-height: 1.5; color: #1a1a1a;}
+        #panel-informe.abierto { right: 0; }
+        .cerrar-informe { position: absolute; top: 15px; left: 20px; cursor: pointer; font-family: sans-serif; font-weight: bold; font-size: 24px; color: #7f8c8d; transition: 0.2s;}
+        .cerrar-informe:hover { color: #e74c3c; transform: scale(1.2); }
+        .texto-nuevo { background: rgba(241, 196, 15, 0.4); padding: 2px 5px; border-radius: 3px; animation: fadeBg 3s forwards; }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    </style>
+</head>
+<body>
+
+    <button id="btn-informe" class="fab" onclick="toggleInforme()">📝</button>
+
+    <div id="panel-informe">
+        <div class="cerrar-informe" onclick="toggleInforme()">✖</div>
+        <h2 style="font-family:'Special Elite'; font-size:1.4rem; border-bottom:3px double #ccc; padding-bottom:10px; margin-bottom:20px; text-align:center; letter-spacing: 2px;">DOCUMENTO OFICIAL</h2>
+        <div id="texto-informe"><p style="color:#95a5a6; text-align:center; font-style:italic;">(Esperando datos de la expedición...)</p></div>
+    </div>
+
+    <div class="libreta" id="libreta-main">
+        <div class="cinta-marcador"></div>
+        <div id="escena-container"></div>
+    </div>
+
+<script>
+    let progresoHistoria = [];
+    const fragmentos = [
+        "El hallazgo ocurrió en 2014, en pleno centro de Chubut, en la árida estepa de la estancia La Flecha.",
+        " Al excavar, revelamos el mapa de la cantera. La disposición de los huesos en distintas capas de roca (colores) demuestra que estos titanes no murieron todos juntos, sino que visitaban este sitio generación tras generación.",
+        " Al analizar los gigantescos huesos, calculamos que el animal pesaba más de 70 toneladas (¡Como 10 elefantes juntos!).",
+        " Entre los restos, encontramos dientes afilados de carnívoros como el Tyrannotitan, que venían a alimentarse.",
+        " La geología revela que hace millones de años, la región estaba cubierta por densos bosques y agua.",
+        " La desecación de la Patagonia se debió a un colosal evento tectónico: el levantamiento de la Cordillera de los Andes."
+    ];
+
+    // ================= SVGs =================
+    const svgRaspon = `<svg viewBox="0 0 100 100" width="90" height="90" style="float:right; margin:0 0 15px 15px; filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));"><path d="M50,85 C15,85 15,15 50,15 C85,15 85,85 50,85" fill="#fff" stroke="var(--ink-raspon)" stroke-width="3"/><circle cx="38" cy="45" r="9" fill="none" stroke="var(--ink-raspon)" stroke-width="2"/><circle cx="62" cy="45" r="9" fill="none" stroke="var(--ink-raspon)" stroke-width="2"/><circle cx="38" cy="45" r="2" fill="var(--ink-raspon)"><animate attributeName="r" values="2;0;2" dur="4s" repeatCount="indefinite"/></circle><circle cx="62" cy="45" r="2" fill="var(--ink-raspon)"><animate attributeName="r" values="2;0;2" dur="4s" repeatCount="indefinite"/></circle><path d="M30,65 Q50,78 70,65" fill="none" stroke="var(--ink-raspon)" stroke-width="3" stroke-linecap="round"/><path d="M20,35 Q10,5 40,10 Q50,-10 60,10 Q90,5 80,35" fill="none" stroke="var(--ink-raspon)" stroke-width="3" stroke-linecap="round"/></svg>`;
+    const svgDienteCuchillo = `<svg viewBox="0 0 50 50" style="width:100%; height:100%;"><path d="M25,5 Q40,20 30,45 L20,45 Q10,20 25,5 Z" fill="#ecf0f1" stroke="#2c3e50" stroke-width="3"/><path d="M35,22 L40,25 M33,32 L38,35" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/></svg>`;
+    const svgDienteLapiz = `<svg viewBox="0 0 50 50" style="width:100%; height:100%;"><rect x="20" y="5" width="10" height="40" rx="4" fill="#bdc3c7" stroke="#2c3e50" stroke-width="3"/></svg>`;
+
+    function dispararConfeti(x, y) {
+        const colores = ['#e74c3c', '#2ecc71', '#f1c40f', '#3498db', '#9b59b6'];
+        for (let i = 0; i < 30; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+            p.style.width = p.style.height = (Math.random() * 8 + 4) + 'px';
+            p.style.left = x + 'px'; p.style.top = y + 'px';
+            p.style.setProperty('--dx', (Math.random() * 200 - 100) + 'px');
+            p.style.setProperty('--dy', (Math.random() * 200 - 100) + 'px');
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 1000);
+        }
+    }
+
+    const historia = {
+        inicio: {
+            mef: ">> INICIANDO SISTEMA...\n>> CARGANDO ARCHIVOS 'PATAGOTITAN'...\n>> ESTADO: ARCHIVOS CORRUPTOS.",
+            raspon: `${svgRaspon} ¡Uf, al fin llegás! Soy el Dr. Raspón. Mi libreta se desarmó por todo el laboratorio. Hay códigos, manchas y misterios. Necesito tu cerebro brillante para recuperar los datos.`,
+            btn: "¡Iniciar Recuperación!",
+            next: 'juego1_mapa'
+        },
+
+        juego1_mapa: {
+            mef: ">> FASE 1: GEOLOCALIZACIÓN.\n>> OBJETIVO: Encontrar estancia 'La Flecha' (Chubut, 2014).",
+            raspon: "Perdí las coordenadas exactas. Sé que está en Chubut, justo en el medio de la provincia, en la estepa. Usá el escáner del satélite.",
+            html: `
+                <div class="juego-caja">
+                    <p class="font-bold mb-3 text-sm tracking-wide">TOCÁ EL MAPA PARA ESCANEAR:</p>
+                    <div id="mapa-radar" onclick="escanearMapa(event)">
+                        <div class="radar-sweep"></div>
+                        <svg viewBox="0 0 300 200" width="80%" height="80%" style="position:absolute; opacity:0.6;">
+                            <path d="M10,20 Q150,10 290,20 L280,180 Q150,190 10,180 C5,100 15,100 10,20 Z" fill="none" stroke="var(--ink-mef)" stroke-width="3" stroke-dasharray="8,4" stroke-linejoin="round"/>
+                            <path d="M20,30 L40,80 L20,130" fill="none" stroke="var(--ink-mef)" stroke-width="2" stroke-dasharray="4,4"/>
+                            <text x="30" y="100" font-family="monospace" fill="#555" font-weight="bold" font-size="10">⛰️ ANDES</text>
+                            <text x="230" y="100" font-family="monospace" fill="#555" font-weight="bold" font-size="10">🌊 MAR</text>
+                        </svg>
+                    </div>
+                    <p id="msg-j1" class="mt-3 text-accent font-bold h-6 text-center text-lg"></p>
+                </div>`,
+            script: () => {
+                window.escanearMapa = (e) => {
+                    let rect = e.target.getBoundingClientRect();
+                    let x = e.clientX - rect.left; let y = e.clientY - rect.top;
+                    
+                    let ping = document.createElement('div'); ping.className = 'ping';
+                    ping.style.left = x + 'px'; ping.style.top = y + 'px';
+                    document.getElementById('mapa-radar').appendChild(ping);
+                    setTimeout(() => ping.remove(), 1000);
+
+                    let dist = Math.sqrt(Math.pow(x - rect.width/2, 2) + Math.pow(y - rect.height/2, 2));
+                    
+                    if (dist < 20) {
+                        document.getElementById('msg-j1').innerHTML = "✅ ¡UBICACIÓN CONFIRMADA!";
+                        document.getElementById('msg-j1').style.color = "#2ecc71";
+                        let winPing = document.createElement('div'); winPing.className = 'ping-exito';
+                        winPing.style.left = x + 'px'; winPing.style.top = y + 'px';
+                        document.getElementById('mapa-radar').appendChild(winPing);
+                        
+                        dispararConfeti(e.clientX, e.clientY);
+                        avanzarProgreso(0);
+                        mostrarBtn('juego2_estratigrafia');
+                    } else {
+                        document.getElementById('msg-j1').innerHTML = "❌ Señal débil. Buscá EXACTAMENTE en el centro.";
+                        document.getElementById('msg-j1').style.color = "var(--accent)";
+                    }
+                }
+            }
+        },
+
+        juego2_estratigrafia: {
+            mef: ">> FASE 2: EXCAVACIÓN Y ESTRATIGRAFÍA.\n>> OBJETIVO: Limpiar el terreno y analizar los hallazgos.",
+            raspon: "¡Llegamos a La Flecha! Raspá la tierra con tu dedo. Si limpiás todo, vamos a poder ver el MAPA ORIGINAL de cómo los paleontólogos encontraron a Patagotitan.",
+            html: `
+                <div class="juego-caja bg-gray-900" style="padding: 10px; border-color:#000;">
+                    <div id="contenedor-mapa-real">
+                        <!-- Mapa real de la cantera (imagen subida) -->
+                        <div id="el-mapa-real">
+                            <div id="pines-estratos" class="hidden">
+                                <!-- Pines colocados sobre los colores clave del mapa -->
+                                <div class="pin-estrato pin-naranja" style="top:40%; left:33%;" onclick="analizarEstrato(this, 'naranja', event)"></div>
+                                <div class="pin-estrato pin-verde" style="top:25%; left:66%;" onclick="analizarEstrato(this, 'verde', event)"></div>
+                                <div class="pin-estrato pin-amarillo" style="top:60%; left:80%;" onclick="analizarEstrato(this, 'amarillo', event)"></div>
+                            </div>
+                        </div>
+                        <canvas id="canvas-excavacion"></canvas>
+                    </div>
+                    
+                    <div id="panel-estratos" class="mt-4 p-4 border border-gray-600 rounded bg-black text-white hidden font-sans shadow-inner">
+                        <p class="text-xs font-bold text-gray-500 mb-2 tracking-widest">ANÁLISIS DE ESTRATOS <span id="txt-analizados" class="text-green-400 float-right text-lg">0/3</span></p>
+                        <p id="info-estrato" class="text-sm font-mono text-yellow-300 min-h-[40px] leading-relaxed">Seleccioná un grupo de huesos en el mapa...</p>
+                    </div>
+
+                    <p id="msg-j2" class="mt-3 font-bold h-6 text-center text-lg text-white">Área explorada: <span id="pct-txt" class="text-accent">0%</span></p>
+                </div>`,
+            script: () => {
+                const canvas = document.getElementById('canvas-excavacion');
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                // El contenedor es aspect-ratio natural, medimos en runtime.
+                setTimeout(() => {
+                    let w = canvas.parentElement.clientWidth;
+                    let h = canvas.parentElement.clientHeight;
+                    canvas.width = w; canvas.height = h;
+
+                    // Dibujar tierra
+                    ctx.fillStyle = '#8d6e63'; ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = '#5d4037';
+                    for(let i=0; i<400; i++) { ctx.beginPath(); ctx.arc(Math.random()*w, Math.random()*h, Math.random()*3+1, 0, Math.PI*2); ctx.fill(); }
+
+                    ctx.globalCompositeOperation = 'destination-out';
+                    let isDrawing = false; let limpios = 0; let meta = w * h * 0.7; // 70% limpio
+
+                    const drawBrush = (x, y) => {
+                        // Simular pincel de paleontólogo (varios puntos con distintos tamaños/opacidades)
+                        for (let i = 0; i < 8; i++) {
+                            const offsetX = (Math.random() - 0.5) * 45;
+                            const offsetY = (Math.random() - 0.5) * 45;
+                            const size = Math.random() * 20 + 20;
+                            ctx.beginPath();
+                            ctx.arc(x + offsetX, y + offsetY, size, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                        
+                        // Partículas de polvo
+                        let d = document.createElement('div');
+                        d.style.position = 'absolute'; d.style.width = d.style.height = '4px';
+                        d.style.background = '#8d6e63'; d.style.borderRadius = '50%';
+                        d.style.left = (x + 10) + 'px'; d.style.top = (y + 10) + 'px';
+                        d.style.pointerEvents = 'none'; d.style.zIndex = '15';
+                        d.style.transition = '0.5s';
+                        document.getElementById('contenedor-mapa-real').appendChild(d);
+                        setTimeout(() => {
+                            d.style.transform = `translate(${(Math.random()-0.5)*100}px, ${(Math.random()-0.5)*100}px) scale(0)`;
+                            d.style.opacity = '0';
+                            setTimeout(() => d.remove(), 500);
+                        }, 50);
+                    };
+
+                    const paint = (e) => {
+                        if(!isDrawing) return;
+                        e.preventDefault();
+                        let rect = canvas.getBoundingClientRect();
+                        let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                        let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+                        
+                        drawBrush(x, y);
+                        
+                        limpios += 1200; 
+                        let pct = Math.min(Math.floor((limpios / meta) * 100), 100);
+                        document.getElementById('pct-txt').innerText = pct + '%';
+                        
+                        if(pct === 100 && limpios > 0) {
+                            limpios = -999999; 
+                            document.getElementById('msg-j2').innerHTML = "✅ ¡MAPA DE CANTERA REVELADO!";
+                            document.getElementById('msg-j2').style.color = "#2ecc71";
+                            
+                            canvas.style.pointerEvents = "none";
+                            canvas.style.transition = "opacity 1.5s"; canvas.style.opacity = "0";
+                            document.getElementById('el-mapa-real').style.opacity = "1";
+                            
+                            // Fase 2B: Análisis
+                            setTimeout(() => {
+                                document.querySelector('.voz-raspon').innerHTML = `${svgRaspon} ¡Zarpado! ¿Ves esos colores en los huesos? Son los estratos (capas de roca de distintas épocas). Tocá los tres radares para analizarlos.`;
+                                document.getElementById('pines-estratos').classList.remove('hidden');
+                                document.getElementById('panel-estratos').classList.remove('hidden');
+                                document.getElementById('msg-j2').style.display = 'none';
+                            }, 1500);
+                        }
+                    };
+
+                    canvas.addEventListener('mousedown', () => isDrawing = true); canvas.addEventListener('mouseup', () => isDrawing = false); canvas.addEventListener('mousemove', paint);
+                    canvas.addEventListener('touchstart', () => isDrawing = true); canvas.addEventListener('touchend', () => isDrawing = false); canvas.addEventListener('touchmove', paint);
+                }, 100);
+
+                // Lógica de pines
+                window.estratosAnalizados = 0;
+                window.analizarEstrato = (el, color, e) => {
+                    if(el.classList.contains('pin-analizado')) return;
+                    
+                    el.classList.add('pin-analizado');
+                    window.estratosAnalizados++;
+                    document.getElementById('txt-analizados').innerText = window.estratosAnalizados + '/3';
+                    
+                    let info = document.getElementById('info-estrato');
+                    if(color === 'naranja') {
+                        info.innerHTML = "🔴 ESTRATO MEDIO:<br> Restos de una manada enterrada a profundidad media. ¡Murieron aquí años atrás!";
+                        info.style.color = "#ff7043";
+                    } else if(color === 'verde') {
+                        info.innerHTML = "🟢 ESTRATO PROFUNDO:<br> Huesos en la capa de roca más antigua. ¡Los primeros visitantes del lugar!";
+                        info.style.color = "#66bb6a";
+                    } else if(color === 'amarillo') {
+                        info.innerHTML = "🟡 ESTRATO SUPERIOR:<br> Los restos más recientes. ¡Murieron en la misma zona mucho tiempo después!";
+                        info.style.color = "#ffee58";
+                    }
+
+                    if(window.estratosAnalizados === 3) {
+                        dispararConfeti(e.clientX, e.clientY);
+                        setTimeout(() => {
+                            document.querySelector('.voz-raspon').innerHTML = `${svgRaspon} ¡Increíble! Si murieron en 3 épocas distintas en el MISMO LUGAR, significa que no fue un accidente. Visitaban este sitio generación tras generación. ¡Fidelidad al sitio!`;
+                            avanzarProgreso(1);
+                            mostrarBtn('juego3_balanza');
+                        }, 1000);
+                    }
+                };
+            }
+        },
+
+        juego3_balanza: {
+            mef: ">> FASE 3: BIOMETRÍA.\n>> CALCULANDO MASA CORPORAL...",
+            raspon: "¡Eran titanes! Para calcular su peso, usá la balanza. Soltá elefantes africanos hasta equilibrar las 70 toneladas.",
+            html: `
+                <div class="juego-caja overflow-hidden" style="height:260px; padding-top:10px;">
+                    <div class="flex justify-between items-center mb-4">
+                        <button class="btn-dibujo" style="padding:8px 15px; font-size:1rem;" onclick="soltarElefante()">+ 🐘 Elefante</button>
+                        <div class="font-bold text-xl" id="txt-toneladas">0 Ton.</div>
+                    </div>
+                    <div class="medidor-peso"><div class="medidor-fill" id="barra-peso"></div></div>
+                    
+                    <div id="balanza">
+                        <div class="plato plato-izq"><div style="position:absolute; bottom:5px; font-size:3rem; left:15px; transform:scaleX(-1);">🦕</div></div>
+                        <div class="plato plato-der" id="zona-elefantes"></div>
+                    </div>
+                    <div id="pivote"></div>
+                </div>`,
+            script: () => {
+                window.elefs = 0;
+                window.soltarElefante = () => {
+                    if(window.elefs >= 10) return;
+                    window.elefs++;
+                    
+                    let e = document.createElement('div'); e.className = 'peso-elefante'; e.innerText = '🐘';
+                    e.style.left = (Math.random() * 50) + 'px'; e.style.bottom = ((window.elefs * 15) + 5) + 'px'; 
+                    document.getElementById('zona-elefantes').appendChild(e);
+
+                    let currentRot = -18 + (window.elefs * 1.8);
+                    document.getElementById('balanza').style.transform = `rotate(${currentRot}deg)`;
+                    
+                    let tons = window.elefs * 7;
+                    document.getElementById('txt-toneladas').innerText = tons + ' Ton.';
+                    document.getElementById('barra-peso').style.width = (window.elefs * 10) + '%';
+                    
+                    if(window.elefs === 10) {
+                        document.getElementById('txt-toneladas').innerHTML = "✅ 70 Ton.";
+                        document.getElementById('txt-toneladas').style.color = "#2ecc71";
+                        document.getElementById('balanza').classList.add('shake');
+                        
+                        let r = document.getElementById('balanza').getBoundingClientRect();
+                        dispararConfeti(r.left + r.width/2, r.top);
+
+                        avanzarProgreso(2);
+                        mostrarBtn('juego4_clasificar');
+                    }
+                }
+            }
+        },
+
+        juego4_clasificar: {
+            mef: ">> FASE 4: TAFONOMÍA.\n>> ALERTA: Restos no identificados en el perímetro.",
+            raspon: "Encontramos dientes mezclados en la tierra. Los de Patagotitan son redondos como lápices (herbívoros). ¡Atrapá rápidamente los 4 dientes con forma de CUCHILLO afilado antes de que se escapen!",
+            html: `
+                <div class="juego-caja" style="padding:10px;">
+                    <div class="flex justify-between font-bold px-2 mb-2">
+                        <span>Atrapados: <span id="txt-atrapados" class="text-accent">0/4</span></span>
+                    </div>
+                    <div id="caja-dientes"></div>
+                </div>`,
+            script: () => {
+                const caja = document.getElementById('caja-dientes');
+                let atrapados = 0; let gameLoop;
+                let tipos = ['c','c','c','c','l','l','l','l','l','l']; 
+                
+                tipos.forEach((tipo, i) => {
+                    let d = document.createElement('div');
+                    d.className = 'diente' + (tipo === 'c' ? ' diente-carnivoro' : '');
+                    d.innerHTML = (tipo === 'c' ? svgDienteCuchillo : svgDienteLapiz) + '<div class="diente-click-area"></div>';
+                    d.style.left = (10 + Math.random() * 70) + '%'; d.style.top = (10 + Math.random() * 70) + '%';
+                    d.dataset.vx = (Math.random() - 0.5) * 2.5; d.dataset.vy = (Math.random() - 0.5) * 2.5;
+                    d.dataset.tipo = tipo;
+                    
+                    d.onclick = function(e) {
+                        if(this.dataset.tipo === 'c') {
+                            this.style.display = 'none';
+                            atrapados++;
+                            document.getElementById('txt-atrapados').innerText = atrapados + '/4';
+                            
+                            let humo = document.createElement('div');
+                            humo.className = 'humo'; humo.style.left = (parseFloat(this.style.left) - 2) + '%'; humo.style.top = parseFloat(this.style.top) + '%';
+                            caja.appendChild(humo);
+
+                            if(atrapados === 4) {
+                                clearInterval(gameLoop);
+                                document.getElementById('txt-atrapados').innerHTML = "¡COMPLETO!";
+                                document.getElementById('txt-atrapados').style.color = "#2ecc71";
+                                dispararConfeti(e.clientX, e.clientY);
+                                avanzarProgreso(3);
+                                mostrarBtn('juego5_uv');
+                            }
+                        } else {
+                            this.style.transform = "rotate(20deg) scale(0.8)";
+                            setTimeout(() => this.style.transform = "rotate(0deg) scale(1)", 200);
+                        }
+                    };
+                    caja.appendChild(d);
+                });
+
+                gameLoop = setInterval(() => {
+                    document.querySelectorAll('.diente').forEach(d => {
+                        let x = parseFloat(d.style.left); let y = parseFloat(d.style.top);
+                        let vx = parseFloat(d.dataset.vx); let vy = parseFloat(d.dataset.vy);
+                        
+                        // Bounce with safety margin (corners fix)
+                        if(x < 5 || x > 88) { d.dataset.vx = -vx; d.style.left = (x < 5 ? 6 : 87) + '%'; }
+                        if(y < 5 || y > 88) { d.dataset.vy = -vy; d.style.top = (y < 5 ? 6 : 87) + '%'; }
+                        
+                        d.style.left = (parseFloat(d.style.left) + vx) + '%'; 
+                        d.style.top = (parseFloat(d.style.top) + vy) + '%';
+                    });
+                }, 30);
+            }
+        },
+
+        juego5_uv: {
+            mef: ">> FASE 5: PALEOECOLOGÍA.\n>> ESCANEANDO ENTORNO CRETÁCICO...",
+            raspon: "¡Un bicho de 70 toneladas necesitaba comer muchísimo! Movimiento tu dedo/mouse por el recuadro negro, seguí las huellas y usá mi linterna UV para ver el ambiente del pasado.",
+            html: `
+                <div class="juego-caja p-0 border-0" style="background:transparent;">
+                    <div id="uv-container">
+                        <div class="huella-uv" style="top:20px; left:30px; transform:rotate(45deg);">🐾</div>
+                        <div class="huella-uv" style="top:90px; left:120px; transform:rotate(70deg);">🐾</div>
+                        <div class="huella-uv" style="top:150px; left:220px; transform:rotate(90deg);">🐾</div>
+                        
+                        <div id="uv-bosque">
+                            <svg viewBox="0 0 300 150">
+                                <path d="M40,140 L40,60 M20,100 L40,60 L60,100 M25,120 L40,80 L55,120" />
+                                <path d="M260,140 L260,40 M240,80 L260,40 L280,80 M245,110 L260,70 L275,110" />
+                                <path d="M150,140 L150,80 M135,110 L150,80 L165,110" />
+                                <path d="M0,130 Q100,100 150,140 T300,110" stroke="#00f2fe" stroke-width="8"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p id="msg-j5" class="mt-3 text-accent font-bold h-6 text-center text-lg">Buscando evidencia...</p>
+                </div>`,
+            script: () => {
+                document.body.classList.add('uv-mode');
+                const cont = document.getElementById('uv-container');
+                const bosque = document.getElementById('uv-bosque');
+                let explorado = 0;
+
+                const moverLuz = (e) => {
+                    e.preventDefault();
+                    let rect = cont.getBoundingClientRect();
+                    let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                    let y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+                    
+                    bosque.style.setProperty('--mouse-x', x + 'px');
+                    bosque.style.setProperty('--mouse-y', y + 'px');
+                    explorado++;
+
+                    if(explorado > 100) {
+                        document.getElementById('msg-j5').innerHTML = "✅ ¡ERA UN BOSQUE HÚMEDO!";
+                        document.getElementById('msg-j5').style.color = "#39ff14";
+                        cont.style.pointerEvents = "none";
+                        bosque.style.maskImage = "none"; bosque.style.webkitMaskImage = "none";
+                        
+                        dispararConfeti(e.clientX, e.clientY);
+                        avanzarProgreso(4);
+                        mostrarBtn('juego6_tectonica');
+                        explorado = -9999;
+                    }
+                };
+
+                cont.addEventListener('mousemove', moverLuz); cont.addEventListener('touchmove', moverLuz);
+            }
+        },
+
+        juego6_tectonica: {
+            mef: ">> FASE 6: GEODINÁMICA.\n>> ALERTA SÍSMICA DETECTADA.",
+            raspon: "¡El evento final! La tierra se levantó y tapó los vientos húmedos del mar. ¡Apretá el botón SISMO muchísimas veces para crear la Cordillera de los Andes!",
+            html: `
+                <div class="juego-caja" id="caja-sismo">
+                    <div id="tectonico-container" style="position:relative; height:150px; overflow:hidden; border-bottom:4px solid var(--ink-mef);">
+                        <svg class="nube-svg" id="nubes-clima" width="100" height="50" viewBox="0 0 80 40" style="position:absolute; top:10px; fill:#7f8c8d;"><path d="M10,30 a10,10 0 0,1 0,-20 a15,15 0 0,1 30,-5 a15,15 0 0,1 25,10 a10,10 0 0,1 0,15 z"/></svg>
+                        <svg class="montana-svg" id="andes" width="100%" height="150" viewBox="0 0 200 100" preserveAspectRatio="none" style="position:absolute; bottom:0; fill:none; stroke:var(--ink-mef); stroke-width:4; transform-origin:bottom center; transform:scaleY(0.1);">
+                            <path d="M-10,100 L40,30 L90,100 M60,100 L110,15 L160,100 M130,100 L180,25 L220,100" />
+                        </svg>
+                    </div>
+                    <div class="text-center mt-6">
+                        <button class="btn-dibujo text-xl px-10 py-4 bg-red-600 text-white border-red-800" id="btn-sismo" onclick="generarSismo()">💥 SISMO 💥</button>
+                    </div>
+                    <div class="medidor-peso mt-4"><div class="medidor-fill" id="barra-sismo" style="background:#e74c3c;"></div></div>
+                </div>`,
+            script: () => {
+                document.body.classList.remove('uv-mode');
+                window.sismos = 0;
+                let nubes = document.getElementById('nubes-clima');
+                let andes = document.getElementById('andes');
+                let caja = document.getElementById('caja-sismo');
+                
+                let timerNubes = setInterval(() => {
+                    let izq = parseInt(nubes.style.left || -50);
+                    if(izq > 300) nubes.style.left = '-80px';
+                    else nubes.style.left = (izq + 6) + 'px';
+                }, 50);
+
+                window.generarSismo = () => {
+                    if(window.sismos >= 100) return;
+                    window.sismos += 8;
+                    
+                    caja.classList.remove('temblor-fuerte'); void caja.offsetWidth; caja.classList.add('temblor-fuerte');
+                    document.body.classList.add('alerta-sismo');
+                    setTimeout(() => document.body.classList.remove('alerta-sismo'), 200);
+                    
+                    let escala = (window.sismos / 100) * 1;
+                    andes.style.transform = `scaleY(${Math.max(0.1, escala)})`;
+                    document.getElementById('barra-sismo').style.width = window.sismos + '%';
+
+                    if(window.sismos >= 100) {
+                        clearInterval(timerNubes);
+                        caja.classList.remove('temblor-fuerte');
+                        document.getElementById('btn-sismo').style.display = 'none';
+                        
+                        let r = document.getElementById('btn-sismo').getBoundingClientRect();
+                        dispararConfeti(r.left + r.width/2, r.top);
+                        
+                        avanzarProgreso(5);
+                        setTimeout(() => ejecutarNext('final'), 2500);
+                    }
+                }
+            }
+        },
+
+        final: {
+            mef: ">> OPERACIÓN EXITOSA. DATOS RECUPERADOS AL 100%.\n>> GUARDANDO EN SERVIDORES DEL MUSEO...",
+            raspon: `${svgRaspon} ¡Lo logramos! Sos un científico de primera. Abrí tu libreta final (el botón amarillo 📝) y leé el informe completo. ¡Mostraselo a tu equipo!`,
+            btn: "Jugar de nuevo",
+            next: 'inicio'
+        }
+    };
+
+    function cargarEscena(id) {
+        const d = historia[id];
+        const cont = document.getElementById('escena-container');
+        
+        cont.innerHTML = ''; cont.classList.remove('fade-in'); void cont.offsetWidth; cont.classList.add('fade-in');
+
+        let divMef = document.createElement('div'); divMef.className = 'voz-mef typing-cursor';
+        cont.appendChild(divMef);
+        
+        let i = 0; let textMef = d.mef;
+        function typeWriter() {
+            if (i < textMef.length) {
+                divMef.innerHTML += textMef.charAt(i) === '\n' ? '<br>' : textMef.charAt(i);
+                i++; setTimeout(typeWriter, 15);
+            } else {
+                divMef.classList.remove('typing-cursor'); mostrarResto();
+            }
+        }
+
+        function mostrarResto() {
+            let html = '';
+            if(d.raspon) html += `<div class="voz-raspon">${d.raspon}</div>`;
+            if(d.html) html += d.html;
+            
+            html += `<div id="zona-avanzar" class="mt-8 text-center ${d.btn ? '' : 'hidden'}">`;
+            if(d.btn) html += `<button class="btn-dibujo" onclick="ejecutarNext('${d.next}')">${d.btn} 👉</button>`;
+            html += `</div>`;
+
+            let wrapper = document.createElement('div'); wrapper.innerHTML = html;
+            cont.appendChild(wrapper);
+
+            if(d.script) d.script();
+        }
+
+        typeWriter();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function mostrarBtn(nextId) {
+        const z = document.getElementById('zona-avanzar');
+        z.innerHTML = `<button class="btn-dibujo fade-in" style="background:#2ecc71; color:white; border-color:#27ae60;" onclick="ejecutarNext('${nextId}')">Siguiente Descubrimiento 👉</button>`;
+        z.classList.remove('hidden');
+    }
+
+    function ejecutarNext(nextId) {
+        if(nextId === 'inicio') { 
+            progresoHistoria = [];
+            document.getElementById('texto-informe').innerHTML = '<p style="color:#95a5a6; text-align:center; font-style:italic;">(Esperando datos de la expedición...)</p>';
+            document.body.classList.remove('uv-mode');
+        }
+        cargarEscena(nextId);
+    }
+
+    function avanzarProgreso(indexFase) {
+        if(!progresoHistoria.includes(indexFase)) {
+            progresoHistoria.push(indexFase);
+            
+            if(progresoHistoria.length === 1) document.getElementById('texto-informe').innerHTML = ''; 
+            
+            let span = document.createElement('span');
+            span.className = 'texto-nuevo'; span.innerText = fragmentos[indexFase];
+            document.getElementById('texto-informe').appendChild(span);
+            
+            document.getElementById('btn-informe').classList.add('alerta');
+            if(indexFase === 5) setTimeout(toggleInforme, 1000);
+        }
+    }
+
+    function toggleInforme() {
+        document.getElementById('panel-informe').classList.toggle('abierto');
+        document.getElementById('btn-informe').classList.remove('alerta');
+    }
+
+    window.onload = () => cargarEscena('inicio');
+
+</script>
+</body>
+</html>

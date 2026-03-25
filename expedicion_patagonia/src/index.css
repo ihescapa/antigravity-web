@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .font-field {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Custom scrollbar for game log */
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 4px;
+  }
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+  }
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(180,140,80,0.5);
+    border-radius: 2px;
+  }
+
+  /* Card hover perspective */
+  .card-3d {
+    transform-style: preserve-3d;
+    perspective: 400px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(250,204,21,0.5); }
+  50% { box-shadow: 0 0 22px rgba(250,204,21,0.95); }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+.animate-slide-up { animation: slideUp 0.3s ease-out both; }
+.animate-pulse-glow { animation: pulseGlow 1.5s ease-in-out infinite; }

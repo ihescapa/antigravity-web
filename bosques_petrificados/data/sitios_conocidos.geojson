@@ -1,0 +1,126 @@
+{
+    "type": "FeatureCollection",
+    "name": "Sitios de Madera Petrificada — Patagonia Argentina",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "nombre": "Bosque Petrificado Sarmiento",
+                "provincia": "Chubut",
+                "edad": "Cretácico (65 Ma)",
+                "formacion": "Grupo Sarmiento",
+                "tipo": "area_protegida",
+                "descripcion": "Área Natural Protegida y Monumento Natural. ~1900 ha. Troncos de coníferas silicificadas con anillos de crecimiento visibles. Colores ocres, rojizos y amarillentos.",
+                "troncos_max_m": 30,
+                "diametro_max_m": 1.5,
+                "acceso": "30 km al sur de Sarmiento (Chubut). Acceso por ruta 25.",
+                "coordenadas_ref": "[-68.93, -45.59]",
+                "calidad_referencia": "alta",
+                "notas": "Sitio de calibración primario. Flora y fauna del Cretácico, Terciario e Inferior y Cuaternario."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.93,
+                    -45.59
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nombre": "Bosque Petrificado Florentino Ameghino",
+                "provincia": "Chubut",
+                "edad": "Cretácico-Eoceno",
+                "formacion": "Formación Florentino Ameghino",
+                "tipo": "yacimiento_privado",
+                "descripcion": "Descubierto en 1998. Campo privado a ~90 km de Trelew, valle inferior del Río Chubut. Contiene troncos de lauráceas y fagáceas de hasta 40 m de alto y 2.5 m de diámetro. Restos de hasta 25 m de largo.",
+                "troncos_max_m": 25,
+                "diametro_max_m": 2.5,
+                "acceso": "~90 km de Trelew. Campo privado, acceso restringido.",
+                "coordenadas_ref": "[-66.45, -43.35]",
+                "calidad_referencia": "media",
+                "notas": "Uno de los troncos más grandes conocidos en Chubut. Coordenadas aproximadas."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -66.45,
+                    -43.35
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nombre": "Parque Paleontológico Bryn Gwyn",
+                "provincia": "Chubut",
+                "edad": "Eoceno-Mioceno (40-14 Ma)",
+                "formacion": "Grupo Sarmiento (superior)",
+                "tipo": "parque_paleontologico",
+                "descripcion": "Primer parque paleontológico de Sudamérica. Cerca de Gaiman / Trelew. Badlands eocenos con fósiles de vertebrados y vegetales. Exhibe 40 millones de años de historia geológica.",
+                "troncos_max_m": null,
+                "diametro_max_m": null,
+                "acceso": "8 km de Gaiman. Acceso público.",
+                "coordenadas_ref": "[-65.52, -43.35]",
+                "calidad_referencia": "media",
+                "notas": "Bueno como referencia espectral de formación Sarmiento. Foco en vertebrados pero contexto geológico relevante."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -65.52,
+                    -43.35
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nombre": "Formación Laguna del Hunco (sector norte)",
+                "provincia": "Chubut",
+                "edad": "Eoceno (~52 Ma)",
+                "formacion": "Formación Laguna del Hunco",
+                "tipo": "yacimiento_cientifico",
+                "descripcion": "Noroeste de Chubut, en el Complejo Volcánico Chubut Medio. Flora tropical excepcionalmente conservada del Eoceno. Clima tropical durante el Máximo Térmico del Cenozoico. Una de las floras fósiles más diversas del mundo.",
+                "troncos_max_m": null,
+                "diametro_max_m": null,
+                "acceso": "Noroeste de Chubut. Terreno volcánico.",
+                "coordenadas_ref": "[-70.5, -43.5]",
+                "calidad_referencia": "media",
+                "notas": "Conectado con flora de Australasia. Angiospermas y helechos."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5,
+                    -43.5
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "nombre": "Bosque Petrificado de Jaramillo",
+                "provincia": "Santa Cruz",
+                "edad": "Jurásico-Cretácico (65 Ma)",
+                "formacion": "Formación La Matilde",
+                "tipo": "parque_nacional",
+                "descripcion": "Monumento Natural Nacional en Santa Cruz. El bosque petrificado más grande del hemisferio sur. Troncos araucarioides de hasta 35 m de largo y 3 m de diámetro. REFERENCIA ESPECTRAL para calibrar el detector.",
+                "troncos_max_m": 35,
+                "diametro_max_m": 3.0,
+                "acceso": "220 km al oeste de Caleta Olivia.",
+                "coordenadas_ref": "[-68.02, -47.70]",
+                "calidad_referencia": "alta",
+                "notas": "Fuera de Chubut pero óptimo para calibración espectral — misma mineralogía de silicificación. Usar como muestra de entrenamiento GEE."
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -68.02,
+                    -47.70
+                ]
+            }
+        }
+    ]
+}
