@@ -158,7 +158,7 @@ header h1 span {
 .search-container {
     position: relative;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 40px auto 0;
 }
 
 #projectSearch {
@@ -188,19 +188,61 @@ header h1 span {
     color: var(--text-muted);
 }
 
+/* Category Boxes */
+.category-boxes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.cat-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.cat-box:hover, .cat-box.active {
+    background: rgba(0, 210, 255, 0.1);
+    border-color: var(--accent-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.cat-icon {
+    font-size: 2rem;
+}
+
+.cat-box span:not(.cat-icon) {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 /* Project Grid */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 40px 0;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px 0 60px;
 }
 
 .project-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 16px;
+    padding: 20px;
     backdrop-filter: blur(10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -216,13 +258,14 @@ header h1 span {
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
     color: white;
 }
 

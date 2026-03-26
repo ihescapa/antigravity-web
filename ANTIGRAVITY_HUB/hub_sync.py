@@ -13,14 +13,14 @@ IGNORE_DIRS = [".git", ".system_generated", "gondwana_hub", "ANTIGRAVITY_HUB", "
 def determine_category(folder_name):
     name_lower = folder_name.lower()
     
-    if any(k in name_lower for k in ["paleo", "ciencia", "bio", "araucaria", "fosil", "genealogia"]):
-        return "Ciencia"
-    elif any(k in name_lower for k in ["cooperativa", "gondwana", "taza"]):
-        return "Emprende"
-    elif any(k in name_lower for k in ["divulgacion", "video", "libro", "charla", "presentation", "flecha", "aventuras"]):
-        return "Divulgacion"
+    if "clases" in name_lower or "presentation" in name_lower:
+        return "CLASES"
+    elif any(k in name_lower for k in ["bosques", "patagotitan", "aventuras", "flecha"]):
+        return "MEF"
+    elif any(k in name_lower for k in ["sapp", "red_paleobotanica", "congreso"]):
+        return "PROYECTO GONDWANA"
     else:
-        return "Lab"
+        return "CONICET"
 
 def scan_projects():
     projects = []

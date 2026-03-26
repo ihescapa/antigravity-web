@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lastSyncSpan) lastSyncSpan.innerText = __HUB_DATA__.last_sync;
         
         const categoryConfig = {
-            "Ciencia": { icon: "🧬", badge: "Ciencia", cssClass: "" },
-            "Emprende": { icon: "🤝", badge: "Emprende", cssClass: "badge-progress" },
-            "Divulgacion": { icon: "🔭", badge: "Divulgación", cssClass: "badge-draft" },
-            "Lab": { icon: "🧪", badge: "Lab", cssClass: "" }
+            "CLASES": { icon: "📚", badge: "CLASES", cssClass: "badge-draft" },
+            "MEF": { icon: "🏛️", badge: "MEF", cssClass: "" },
+            "PROYECTO GONDWANA": { icon: "🌍", badge: "GONDWANA", cssClass: "badge-progress" },
+            "CONICET": { icon: "🔬", badge: "CONICET", cssClass: "" }
         };
 
         __HUB_DATA__.projects.forEach(project => {
-            const config = categoryConfig[project.category] || categoryConfig["Lab"];
+            const config = categoryConfig[project.category] || categoryConfig["CONICET"];
             
             const card = document.createElement('div');
             card.className = 'project-card';
@@ -28,33 +28,58 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="status-badge ${config.cssClass}">${config.badge}</span>
                 </div>
                 <h3>${project.name}</h3>
-                <p>Categoría: ${project.category} <br>Modificado: ${project.modified}</p>
+                <p style="font-size:0.8rem;">Modificado: ${project.modified}</p>
                 <div class="card-actions">
-                    <a href="${project.url}" class="btn-launch">Ingresar ➔</a>
-                    <button class="btn-publish" onclick="publishProject('${project.name}')">Publicar</button>
-                    <button class="btn-delete" onclick="deleteProject('${project.name}')">🗑️</button>
+                    <a href="${project.url}" class="btn-launch" style="padding: 8px 10px;">Ingresar ➔</a>
                 </div>
             `;
             projectGrid.appendChild(card);
         });
     }
 
-    const projectCards = document.querySelectorAll('.project-card');    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+    const projectCards = document.querySelectorAll('.project-card');    
+    
+    // Category Box Filtering
+    const catBoxes = document.querySelectorAll('.cat-box');
+    catBoxes.forEach(box => {
+        box.addEventListener('click', () => {
+            // Toggle active state
+            if(box.classList.contains('active')) {
+                box.classList.remove('active');
+                searchInput.value = '';
+                filterCards('');
+            } else {
+                catBoxes.forEach(b => b.classList.remove('active'));
+                box.classList.add('active');
+                const cat = box.getAttribute('data-cat').toLowerCase();
+                filterCards(cat);
+            }
+        });
+    });
 
+    searchInput.addEventListener('input', (e) => {
+        catBoxes.forEach(b => b.classList.remove('active'));
+        filterCards(e.target.value.toLowerCase());
+    });
+
+    function filterCards(searchTerm) {
         projectCards.forEach(card => {
             const projectName = card.getAttribute('data-name');
             if (projectName.includes(searchTerm)) {
                 card.style.display = 'flex';
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 50);
             } else {
-                card.style.display = 'none';
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
             }
         });
-    });
+    }
 
     // Add subtle reveal animation on load
     projectCards.forEach((card, index) => {
