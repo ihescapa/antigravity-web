@@ -1,0 +1,198 @@
+.sidebar {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    background: var(--color-bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: width var(--transition-slow);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar.collapsed {
+    width: 64px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    min-height: var(--header-height);
+}
+
+.brandIcon {
+    width: 36px;
+    height: 36px;
+    background: var(--color-accent);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.brandText {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.brandName {
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+}
+
+.brandSub {
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+}
+
+.nav {
+    flex: 1;
+    padding: var(--space-4) var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+    border-radius: var(--radius-md);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navItem:hover {
+    background: var(--color-bg-sidebar-hover);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.navItem.active {
+    background: rgba(44, 95, 138, 0.3);
+    color: white;
+    border: 1px solid rgba(44, 95, 138, 0.4);
+}
+
+.navItem.highlight {
+    background: var(--color-accent);
+    color: white;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.navItem.highlight:hover {
+    background: var(--color-accent-hover);
+    color: white;
+}
+
+.navIcon {
+    flex-shrink: 0;
+}
+
+.navLabel {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.collapseBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color var(--transition);
+}
+
+.collapseBtn:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.userPanel {
+    margin-top: auto;
+    padding: var(--space-4) var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    overflow: hidden;
+    cursor: default;
+}
+
+.userAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.userName {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userRole {
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: capitalize;
+}
+
+.logoutBtn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.logoutBtn:hover {
+    background: rgba(255, 100, 100, 0.1);
+    color: #ff6b6b;
+}

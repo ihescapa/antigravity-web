@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/blocks/PdfBlock.tsx -> ./PdfViewer\":{\"id\":\"components/blocks/PdfBlock.tsx -> ./PdfViewer\",\"files\":[\"static/css/_app-pages-browser_src_components_blocks_PdfViewer_tsx.css\",\"static/chunks/_app-pages-browser_src_components_blocks_PdfViewer_tsx.js\"]}}"

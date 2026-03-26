@@ -1,0 +1,17 @@
+[
+  {
+    "id": "mat-1",
+    "nombre": "Herramientas Digitales",
+    "color": "#2C5F8A"
+  },
+  {
+    "id": "mat-2",
+    "nombre": "Valle Gondwana",
+    "color": "#E8A833"
+  },
+  {
+    "id": "mat-3",
+    "nombre": "Cultura Digital",
+    "color": "#4A5568"
+  }
+]

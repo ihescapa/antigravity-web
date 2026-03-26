@@ -1,0 +1,38 @@
+{
+  "id": "fotograficamente",
+  "titulo": "Fotograficamente",
+  "subtitulo": "Clase de Herramientas Digitales",
+  "materia": "Herramientas Digitales",
+  "resumen": "Conceptos fotográficos y herramientas digitales aplicadas",
+  "objetivos": [
+    "Comprender la luz y composición",
+    "Dominar las herramientas fotográficas"
+  ],
+  "etiquetas": [
+    "fotografia",
+    "herramientas"
+  ],
+  "autor": "Ignacio Escapa",
+  "createdAt": "2026-03-10T20:00:00.000Z",
+  "updatedAt": "2026-03-10T20:00:00.000Z",
+  "estado": "lista",
+  "bloques": [
+    {
+      "id": "b-port",
+      "tipo": "portada",
+      "propiedades": {
+        "titulo": "Fotograficamente",
+        "subtitulo": "Técnicas y Herramientas Digitales",
+        "materia": "Herramientas Digitales"
+      }
+    },
+    {
+      "id": "b-pdf",
+      "tipo": "pdf",
+      "propiedades": {
+        "titulo": "Presentación: Fotograficamente",
+        "src": "/pdfs/fotograficamente.pdf"
+      }
+    }
+  ]
+}

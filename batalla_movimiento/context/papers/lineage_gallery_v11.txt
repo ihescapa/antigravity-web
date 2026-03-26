@@ -1,0 +1,45 @@
+# Galería Maestra de Linajes: Bio-Arquitectura del Paso (v11.1)
+
+Esta sección constituye el archivo definitivo de los linajes estudiados en la muestra, cruzando la evidencia ósea con la evidencia etológica del rastro.
+
+---
+
+## 🏛️ Titanosaurios (Los Pilares del Gondwana)
+- **Anatomía Ósea:** Fémures masivos de sección elíptica con una inclinación medial que permite la postura "Wide-Gauge" (trocha ancha). Las vértebras caudales proceliares permitían una cola flexible pero robusta para el equilibrio.
+- **Análisis del Rastro:** Sus huellas manu-pes muestran que el centro de masa estaba desplazado hacia adelante. Se observan rastros paralelos de decenas de individuos en sitios como la Patagonia septentrional.
+- **Revelación de Movimiento:** El registro icnológico fue el que corrigió la visión antigua de gigantes solitarios. Las pistas demuestran **gregarismo organizado**: los adultos de mayor tamaño caminaban en los flancos, dejando un "pasillo seguro" en el centro para los juveniles. El movimiento era lento (Fr < 0.2) pero implacable.
+
+---
+
+## 🏛️ Abelisaúridos (Los Atletas del Sur)
+- **Anatomía Ósea:** Caracterizados por brazos vestigiales y un cráneo corto y robusto. El cuello poseía una musculatura masiva insertada en vértebras con epipófisis altas, diseñada para resistir fuerzas de torsión durante el combate o la caza.
+- **Análisis del Rastro:** Huellas tridáctilas, de dedos finos y garras marcadas. La zancada es excepcionalmente larga en relación al tamaño corporal.
+- **Revelación de Movimiento:** Mediante el análisis de la **cadencia de zancada**, sabemos que eran depredadores de emboscada y sprint. Su centro de gravedad, situado justo frente a la pelvis, les otorgaba una maniobrabilidad mayor que la de los tiranosaurios del norte. La cola actuaba como un timón estabilizador en giros de 90 grados.
+
+---
+
+## 🏛️ Megatherium (El Gigante de Pehuén Co)
+- **Anatomía Ósea:** Poseía una pelvis de más de un metro de ancho y un fémur masivo. Sus garras no estaban diseñadas solo para cavar, sino para el apoyo lateral del pie.
+- **Análisis del Rastro:** El rastro de Pehuén Co (Buenos Aires) es un tesoro mundial. Muestra huellas de pies (pes) de casi un metro de largo apoyados sobre el borde exterior (pedipedismo).
+- **Revelación de Movimiento:** Las huellas permitieron confirmar el **bipedismo facultativo**. Aunque podían ser cuadrúpedos, pasaban gran parte de su tiempo desplazándose sobre sus patas traseras y su cola (trípode), permitiéndoles una visión elevada del ambiente costero y acceso a vegetación de altura. Es el movimiento más pesado registrado en bipedismo de mamíferos.
+
+---
+
+## 🏛️ Manidens decipiens (El Dinosaurio de Bolsillo)
+- **Anatomía Ósea:** Un heterodontosáurido de tamaño diminuto (60 cm). Poseía dientes diferenciados (caniniformes) y un sistema de manos prensiles con pulgares oponibles.
+- **Análisis del Rastro:** Huellas delicadas, encontradas en asociación con sedimentos boscosos de araucariáceas.
+- **Revelación de Movimiento:** Según las investigaciones integradas (Archangelsky, 2005), el *Manidens* representa la agilidad máxima del Jurásico Medio. Su bipedismo era nervioso y rápido. Las manos prensiles sugieren que no solo corría por el suelo, sino que tenía capacidades **arbóreas**, utilizándolas para trepar a las araucarias gigantes ante la presencia de terópodos.
+
+---
+
+## 🏛️ Ameghinichnus (El Pionero del Salto)
+- **Anatomía Ósea:** Un mammaliaforme basal (pre-mamífero) de unos 100-200 gramos. Esqueleto ligero, similar a un roedor pero con rasgos reptilianos en la mandíbula.
+- **Análisis del Rastro:** Se observan dos patrones: caminar alternado y salto coordinado (bounding). Es la "estrella" de nuestra laja de 5 metros.
+- **Revelación de Movimiento:** Representa el primer registro mundial de la marcha saltatoria en mamíferos. El análisis de las huellas de cola y el arrastre de los dedos permite ver cómo el animal perdía el contacto con el suelo por breves milisegundos. Esta agilidad fue clave para sobrevivir en un ecosistema dominado por dinosaurios.
+
+---
+
+## 👣 Hexapodichnus casamiquelai (La Escala del Detalle)
+- **Anatomía:** Icnogénero atribuido a insectos hexápodos del Jurásico.
+- **Análisis del Rastro:** Huellas milimétricas de seis patas que cruzan transversalmente las pistas de los vertebrados.
+- **Revelación:** Su preservación es la prueba definitiva de las condiciones excepcionales de la laja. Solo un barro volcánico de granulometría ultra-fina y una humedad perfecta podía registrar el paso de un insecto al lado de un dinosaurio. Son los "testigos silenciosos" del fango jurásico.

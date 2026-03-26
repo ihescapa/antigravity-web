@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+*.psd
+__pycache__/

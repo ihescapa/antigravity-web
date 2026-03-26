@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Proyecto Gondwana</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@800&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <header id="main-header" class="scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo-gondwana.png" alt="Gondwana Logo">
+            </a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="fuego.html">Procesos</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="socios.html">Socios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="padding-top: 10vw;">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <p class="text-mono">Bitácora de Expedición [NEWS]</p>
+                <h1 class="reveal-up">Novedades y <span class="text-gradient">Relatos</span></h1>
+                <p class="subtitle">Crónicas sobre ciencia, arte y el diario de nuestra cooperativa desde el sur del
+                    mundo.</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+                <!-- Blog Post 1 -->
+                <article class="glass-card"
+                    style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;">
+                    <img src="WhatsApp-Image-2024-04-13-at-16.34.58.jpeg" alt="Lanzamiento"
+                        style="border-radius: var(--radius-md); width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                    <div>
+                        <span class="text-mono" style="color: var(--clr-primary);">22 Abril 2024</span>
+                        <h2 style="margin: 1rem 0;">Lanzamiento oficial de Proyecto Gondwana</h2>
+                        <p>Nos presentamos formalmente en el Museo Municipal de Artes Visuales de Trelew. Un evento que
+                            marcó el inicio de nuestra misión colectiva por integrar la ciencia y el diseño en el
+                            corazón de la Patagonia.</p>
+                        <a href="#" class="text-mono"
+                            style="color: var(--clr-tertiary); display: block; margin-top: 2rem;">Leer Crónica →</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="glass-card"
+                    style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;">
+                    <img src="02-LIBRO-01-1-1024x1024.jpg" alt="Libro"
+                        style="border-radius: var(--radius-md); width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                    <div>
+                        <span class="text-mono" style="color: var(--clr-primary);">05 Mayo 2024</span>
+                        <h2 style="margin: 1rem 0;">El Corredor Valle de Gondwana: Una ruta al pasado</h2>
+                        <p>Exploramos los 684 km que conectan Trelew con Esquel, analizando los puntos de mayor interés
+                            geológico y paleontológico. Este viaje es la base de nuestro nuevo libro guía.</p>
+                        <a href="#" class="text-mono"
+                            style="color: var(--clr-tertiary); display: block; margin-top: 2rem;">Leer Crónica →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <p class="text-mono">Suscribite a nuestra red de noticias.</p>
+            <p style="color: var(--clr-text-muted); margin-top: 1rem; font-size: 0.9rem;">Próximamente estaremos
+                enviando gacetillas científicas directo a tu buzón.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

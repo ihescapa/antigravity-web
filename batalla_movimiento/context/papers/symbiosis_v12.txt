@@ -1,0 +1,20 @@
+# Los Ecosistemas del Fuego: Supervivencia en Ceniza Volcánica (v12.1)
+
+## 1. El Estrés Geoquímico de La Matilde
+La Formación La Matilde no solo era un paisaje de ceniza; era un entorno de **estrés químico extremo**. Las erupciones explosivas de la Cordillera en formación depositaban regularmente cenizas vítreas (tefra) que alteraban drásticamente el pH del suelo y la disponibilidad de agua.
+- **Toxicidad y Nutrientes:** La ceniza fresca puede liberar metales pesados y acidificar el suelo, bloqueando al mismo tiempo la absorción de fósforo, un nutriente vital para las coníferas gigantes.
+- **Micro-climas Térmicos:** Se han identificado áreas con influencias geotermales (hot springs), similares a las de Yellowstone, donde la temperatura del suelo y la química del agua creaban nichos de supervivencia únicos.
+
+## 2. La Red de Micelio: El Internet Jurásico
+En este contexto, la **Simbiosis Micorrícica Arbuscular (HMA)** no era un lujo, sino una necesidad existencial.
+- **Bio-Minado de Fósforo:** Los hongos del orden *Glomerales* extendían sus hifas mucho más allá de las raíces de las araucarias, "minando" fósforo en el vidrio volcánico y entregándolo al árbol a cambio de azúcares (carbono).
+- **Protección contra Patógenos:** El micelio actuaba como una barrera física y química, protegiendo las raíces de la toxicidad del aluminio y de posibles ataques fúngicos patógenos en un suelo en constante degradación.
+- **Hallazgo Clave (Falcone, 2018):** La preservación de las "arbusculas" (estructuras de intercambio dentro de las células de la raíz) en fósiles de La Matilde confirma que esta tecnología biológica ya estaba plenamente operativa hace 165 millones de años.
+
+## 3. Bosques de Resiliencia
+Los **Bosques Petrificados** que hoy vemos como piedras inertes fueron, en su momento, máquinas de supervivencia masivas.
+- **Agathoxylon y Araucaria:** Estos géneros muestran anillos de crecimiento que indican estacionalidad, pero también "ciclos de estrés" correlacionados con grandes depósitos de ceniza.
+- **Hongos Endófitos:** Además de las micorrizas, se han descubierto hongos viviendo dentro de las hojas y tallos (endófitos), lo que sugiere una defensa interna contra la desecación y la radiación UV en un ambiente con atmósfera volátil.
+
+## 4. Conclusión para la Exhibición
+Esta "colaboración biológica" entre hongos y plantas es el corazón del ecosistema de la Laja Ameghinichnus. Mientras los pequeños mamaliaformes luchaban por moverse sobre el fango, bajo sus pies ocurría otra batalla silenciosa por los nutrientes. En el mapping, representaremos esta "red invisible" mediante pulsos de luz subterránea que conectan los troncos de araucarias con el suelo.

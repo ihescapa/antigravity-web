@@ -1,0 +1,52 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/materias/[materia]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/materias/[materia]/page.css",
+      "static/chunks/app/materias/[materia]/page.js"
+    ],
+    "/clases/[id]/presentar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/clases/[id]/presentar/page.css",
+      "static/chunks/app/clases/[id]/presentar/page.js"
+    ],
+    "/clases/nueva/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/clases/nueva/page.css",
+      "static/chunks/app/clases/nueva/page.js"
+    ],
+    "/clases/[id]/editar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/clases/[id]/editar/page.css",
+      "static/chunks/app/clases/[id]/editar/page.js"
+    ],
+    "/recursos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/recursos/page.css",
+      "static/chunks/app/recursos/page.js"
+    ],
+    "/plantillas/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/plantillas/page.css",
+      "static/chunks/app/plantillas/page.js"
+    ]
+  }
+}

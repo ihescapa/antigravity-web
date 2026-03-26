@@ -1,0 +1,378 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./src/app/globals.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+/* === DESIGN TOKENS === */
+:root {
+    /* Colors */
+    --color-bg: #F7F6F2;
+    --color-bg-card: #FFFFFF;
+    --color-bg-sidebar: #1E1E2E;
+    --color-bg-sidebar-hover: #2A2A3E;
+    --color-border: #E5E2DA;
+    --color-border-light: #EEEBE3;
+
+    --color-text-primary: #1A1A2E;
+    --color-text-secondary: #5A5A72;
+    --color-text-muted: #9090A8;
+    --color-text-inverse: #F7F6F2;
+
+    --color-accent: #2C5F8A;
+    --color-accent-hover: #1E4A6E;
+    --color-accent-light: #EBF2F9;
+
+    --color-gold: #C9913A;
+    --color-gold-light: #FBF2E4;
+
+    --color-success: #2E7D52;
+    --color-success-bg: #E8F5EE;
+    --color-warning: #B45309;
+    --color-warning-bg: #FEF3C7;
+    --color-danger: #B91C1C;
+    --color-danger-bg: #FEE2E2;
+
+    /* Estado badges */
+    --color-borrador: #6B7280;
+    --color-borrador-bg: #F3F4F6;
+    --color-lista: #2E7D52;
+    --color-lista-bg: #E8F5EE;
+    --color-archivada: #9CA3AF;
+    --color-archivada-bg: #F9FAFB;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 1.875rem;
+    --fs-4xl: 2.25rem;
+    --fs-5xl: 3rem;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12);
+
+    /* Sidebar */
+    --sidebar-width: 260px;
+    --header-height: 64px;
+
+    /* Transitions */
+    --transition: 150ms ease;
+    --transition-slow: 300ms ease;
+}
+
+/* === RESET === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* === UTILITIES === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/Sidebar.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.Sidebar_sidebar__5oZEx {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    background: var(--color-bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: width var(--transition-slow);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.Sidebar_sidebar__5oZEx.Sidebar_collapsed__ZEY4R {
+    width: 64px;
+}
+
+.Sidebar_brand__oukDJ {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    min-height: var(--header-height);
+}
+
+.Sidebar_brandIcon__wQZxg {
+    width: 36px;
+    height: 36px;
+    background: var(--color-accent);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.Sidebar_brandText__enw_k {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.Sidebar_brandName__E3UBK {
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+}
+
+.Sidebar_brandSub__2Zcr6 {
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+}
+
+.Sidebar_nav__yigU7 {
+    flex: 1 1;
+    padding: var(--space-4) var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.Sidebar_navItem__NB3MD {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+    border-radius: var(--radius-md);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    transition: all var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Sidebar_navItem__NB3MD:hover {
+    background: var(--color-bg-sidebar-hover);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.Sidebar_navItem__NB3MD.Sidebar_active__6EB_0 {
+    background: rgba(44, 95, 138, 0.3);
+    color: white;
+    border: 1px solid rgba(44, 95, 138, 0.4);
+}
+
+.Sidebar_navItem__NB3MD.Sidebar_highlight__PNdIE {
+    background: var(--color-accent);
+    color: white;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.Sidebar_navItem__NB3MD.Sidebar_highlight__PNdIE:hover {
+    background: var(--color-accent-hover);
+    color: white;
+}
+
+.Sidebar_navIcon__S5125 {
+    flex-shrink: 0;
+}
+
+.Sidebar_navLabel__c33cJ {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Sidebar_collapseBtn__Ocn_9 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color var(--transition);
+}
+
+.Sidebar_collapseBtn__Ocn_9:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.Sidebar_userPanel__nBQvc {
+    margin-top: auto;
+    padding: var(--space-4) var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+}
+
+.Sidebar_userInfo__7eqTY {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    overflow: hidden;
+    cursor: default;
+}
+
+.Sidebar_userAvatar__bl4Y7 {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.Sidebar_userDetails__t_Av_ {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.Sidebar_userName__q0Kk9 {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Sidebar_userRole__hO7SZ {
+    font-size: var(--fs-xs);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: capitalize;
+}
+
+.Sidebar_logoutBtn__PbGYb {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.Sidebar_logoutBtn__PbGYb:hover {
+    background: rgba(255, 100, 100, 0.1);
+    color: #ff6b6b;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/layout/MainLayout.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.MainLayout_layout__W6_28 {
+    display: flex;
+    min-height: 100vh;
+}
+
+.MainLayout_main__qiyr_ {
+    flex: 1 1;
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    transition: margin-left var(--transition-slow);
+    overflow-x: hidden;
+}

@@ -1,0 +1,38 @@
+{
+  "id": "clase-oficial-1",
+  "titulo": "Iniciación: Herramientas Digitales",
+  "subtitulo": "Material oficial de cátedra",
+  "materia": "Herramientas Digitales",
+  "resumen": "Clase introductoria basada en la presentación oficial",
+  "objetivos": [
+    "Comprender los conceptos básicos",
+    "Navegar la presentación"
+  ],
+  "etiquetas": [
+    "oficial",
+    "intro"
+  ],
+  "autor": "Coordinación",
+  "createdAt": "2026-03-10T18:09:59.462Z",
+  "updatedAt": "2026-03-10T18:09:59.467Z",
+  "estado": "lista",
+  "bloques": [
+    {
+      "id": "b-port",
+      "tipo": "portada",
+      "propiedades": {
+        "titulo": "Iniciación: Herramientas Digitales",
+        "subtitulo": "Material oficial de cátedra",
+        "materia": "Herramientas Digitales"
+      }
+    },
+    {
+      "id": "b-pdf",
+      "tipo": "pdf",
+      "propiedades": {
+        "titulo": "Presentación Oficial",
+        "src": "/uploads/clase_herramientas.pdf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Ideario: La Batalla del Movimiento (v11.1)
+
+Este documento registra el pensamiento crítico y la voluntad artística que fundamentan cada decisión del proyecto.
+
+## 1. El Concepto de "Ecosfera de la Huella"
+La piedra no es el fin, sino la superficie de registro. La laja de 5 metros es entendida como un **dispositivo de almacenamiento temporal**. No estamos viendo "roca con marcas", sino un evento dinámico (una tormenta volcánica jurásica) que fue "grabado" por la plasticidad del fango. El proyecto busca "leer" ese disco duro de piedra.
+
+## 2. La Biomecánica como Puente Ontológico
+La tensión entre la máquina (engranajes, motores, zootropos) y la biología (músculos, huesos, pasos) es central. Sostenemos que la anatomía es la resolución de problemas de ingeniería por parte de la vida. Estudiar los engranajes del **Plesiosaurio** de Ethel Dening es, en realidad, estudiar el lenguaje de la supervivencia.
+
+## 3. Estética "Nano Banana Premium"
+El proyecto rechaza la visualización museística genérica. Se opta por una estética de **Consola Científica de Alta Gama**:
+- **Paleta:** Oscuros absolutos, acentos dorados y luz dirigida.
+- **Tipografía:** Combinación de *Outfit* (títulos imponentes) con *Fira Code* (detalles técnicos y metadatos).
+- **Materialidad:** Símil acero corten, vidrio templado y madera carbonizada.
+
+## 4. El Valor del "Bicho Pequeño"
+Frente a la espectacularidad tradicional de los dinosaurios gigantes, este proyecto reivindica al **Ameghinichnus** y al **Manidens**. Proponemos que la "Batalla del Movimiento" es más dramática y refinada en el pequeño mamaliaforme de 100g que en el titanosaurio de 40 toneladas. La agilidad es el verdadero tesoro de la evolución.
+
+## 5. El Mapping Epistémico
+La luz no se usa como decoración, sino como **herramienta de conocimiento**. Cada silueta proyectada sobre la piedra está validada por el cálculo del Número de Froude y la reconstrucción anatómica. La luz "des-fosiliza" el rastro, devolviéndole su estatus de movimiento.
+
+## 6. El Archivo como Obra
+La plataforma digital (ARK-V11) no es solo una web de gestión; es la **Bóveda del Legado**. Cada paper, ficha técnica y boceto histórico forma parte de la obra total. El proyecto no termina en la sala de museo; continúa en este archivo permanente y abierto a la comunidad científica.

@@ -1,0 +1,345 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/dashboard/ClaseCard.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+.ClaseCard_card__UntuR {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ClaseCard_card__UntuR:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-light);
+}
+
+.ClaseCard_header__q9MNs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-4) var(--space-2);
+}
+
+.ClaseCard_estado__j38Q8 {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
+}
+
+.ClaseCard_menuContainer__kHlaW {
+    position: relative;
+}
+
+.ClaseCard_menuBtn__KxW_W {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: var(--space-1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.ClaseCard_menuBtn__KxW_W:hover {
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+.ClaseCard_dropdown__15L9n {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    min-width: 140px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.ClaseCard_dropdownItem__CVA8_ {
+    width: 100%;
+    text-align: left;
+    padding: var(--space-2) var(--space-3);
+    border: none;
+    background: none;
+    font-size: var(--fs-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: background 0.2s ease;
+}
+
+.ClaseCard_dropdownItem__CVA8_:hover {
+    background: var(--color-bg);
+}
+
+.ClaseCard_dropdownItemDanger__AO648 {
+    color: #ef4444;
+    /* red-500 */
+}
+
+.ClaseCard_dropdownItemDangerConfirm__7lnd_ {
+    background: #fee2e2;
+    /* red-100 */
+    color: #dc2626;
+    /* red-600 */
+    font-weight: 600;
+}
+
+.ClaseCard_dropdownItemDangerConfirm__7lnd_:hover {
+    background: #fecaca;
+    /* red-200 */
+}
+
+.ClaseCard_content__7feT7 {
+    padding: 0 var(--space-4) var(--space-4);
+    flex: 1 1;
+}
+
+.ClaseCard_materia__RLWE7 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--fs-xs);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+}
+
+.ClaseCard_titulo__VVd68 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-1);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ClaseCard_subtitulo__kYPxh {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+}
+
+.ClaseCard_meta__ZpOOU {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+}
+
+.ClaseCard_metaItem___6p_e {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ClaseCard_actions__4tTR8 {
+    display: flex;
+    border-top: 1px solid var(--color-border);
+}
+
+.ClaseCard_editBtn__Xmwfn,
+.ClaseCard_presentBtn__lhQzl {
+    flex: 1 1;
+    text-align: center;
+    padding: var(--space-3);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    transition: background var(--transition);
+}
+
+.ClaseCard_editBtn__Xmwfn {
+    color: var(--color-text-secondary);
+    border-right: 1px solid var(--color-border);
+}
+
+.ClaseCard_editBtn__Xmwfn:hover {
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+}
+
+.ClaseCard_presentBtn__lhQzl {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.ClaseCard_presentBtn__lhQzl:hover {
+    background: var(--color-accent-light);
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/materias/[materia]/page.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.page_container__wFw_V {
+    padding: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page_header__5xsAB {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-8);
+}
+
+.page_backLink__vKi6R {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-4);
+    transition: color var(--transition);
+}
+
+.page_backLink__vKi6R:hover {
+    color: var(--color-accent);
+}
+
+.page_title__GUYWJ {
+    font-family: var(--font-serif);
+    font-size: var(--fs-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+}
+
+.page_subtitle__VZOdr {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+}
+
+.page_primaryBtn__iVL_i {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: background var(--transition);
+}
+
+.page_primaryBtn__iVL_i:hover {
+    background: var(--color-accent-dark);
+}
+
+.page_toolbar__CpL_C {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-6);
+    background: var(--color-bg);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+}
+
+.page_searchBox__jJHBc {
+    position: relative;
+    flex: 1 1;
+    max-width: 400px;
+}
+
+.page_searchIcon__sByRV {
+    position: absolute;
+    left: var(--space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+}
+
+.page_searchInput__5RtmX {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3) var(--space-2) var(--space-9);
+    font-size: var(--fs-sm);
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+.page_searchInput__5RtmX:focus {
+    border-color: var(--color-accent);
+}
+
+.page_filterBox__5vu72 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.page_filterIcon__YB7Rc {
+    color: var(--color-text-muted);
+}
+
+.page_filterSelect__vdLu3 {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+}
+
+.page_grid__EwOTf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: var(--space-6);
+    gap: var(--space-6);
+}
+
+.page_loading__me_cN {
+    text-align: center;
+    padding: var(--space-12);
+    color: var(--color-text-muted);
+    font-size: var(--fs-lg);
+}
+
+.page_emptyState__xBLrQ {
+    text-align: center;
+    padding: var(--space-12);
+    background: var(--color-bg);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--color-border);
+}
+
+.page_emptyState__xBLrQ h3 {
+    font-size: var(--fs-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.page_emptyState__xBLrQ p {
+    color: var(--color-text-secondary);
+}

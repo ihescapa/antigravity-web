@@ -1,0 +1,45 @@
+# Tratado Técnico: La Evolución de la Locomoción Terrestre (v11.1)
+
+## 1. El Paradigma de la Reconstrucción Biomecánica
+La reconstrucción de la locomoción en animales extintos no es una mera ilustración artística (paleoarte), sino una disciplina físico-matemática que bipedación entre la **Estratigrafía**, la **Anatomía Comparada** y la **Dinámica Robotizada**. Dado que el movimiento es un proceso intrínsecamente temporal y los fósiles son remanentes estáticos, el puente se construye a través de la simulación.
+
+### Metodologías de Análisis:
+- **XROMM (X-ray Reconstruction of Moving Morphology):** Esta técnica permite visualizar la interacción entre huesos y tejidos blandos en parientes vivos (como aves cursoriales y cocodrilos). Mediante la superposición de escaneos CT de fósiles sobre modelos cinemáticos de especies vivas, podemos descartar arcos de movimiento imposibles.
+- **Análisis de Elementos Finitos (FEA):** Aplicamos mallas matemáticas sobre los modelos 3D de huesos (ej. el fémur de un Titanosaurio). Esto nos permite identificar los puntos de máxima tensión mecánica. El "espesor" de la vida se revela cuando comprendemos que un hueso no es solo forma, sino una respuesta a la carga gravitatoria.
+- **Sincronización Estroboscópica:** En los zootropos de nuestra exhibición, el parpadeo de la luz a frecuencias específicas (Fenómeno Phi) permite al ojo humano procesar cuadros estáticos como una animación fluida de 24fps, revelando la mecánica de carrera del *Eoraptor*.
+
+---
+
+## 2. La Transición Postural: Del Arrastre a la Verticalidad
+Uno de los hitos más críticos en la historia de la vida es la transición de la postura **esparrancada (sprawling)** a la **erecta (parasagittal)**.
+
+### El Fenómeno de Carrier y la Eficiencia Respiratoria:
+- **Sprawling (Lagartos/Anfibios):** En esta postura, los miembros se proyectan lateralmente. El movimiento requiere una ondulación lateral de la columna. Esto comprime alternativamente los pulmones, lo que impide que el animal respire mientras corre (Fenómeno de Carrier).
+- **Parasagittal (Dinosaurios/Mamíferos):** Al mover los miembros bajo el tronco, la columna deja de ondularse lateralmente. Esto desacopla la locomoción de la respiración, permitiendo metabolismos más altos y carreras de larga distancia (cursorialismo). En nuestra laja de 5m, vemos esta transición en los mamaliaformes, cuyos miembros anteriores ya muestran una verticalidad avanzada comparada con sus ancestros cinodontes.
+
+---
+
+## 3. Escalamiento y Similitud Dinámica (El Número de Froude)
+La pregunta fundamental de nuestro "Laboratorio de Escala" es: ¿Cómo comparamos el movimiento de un *Ameghinichnus* de 100 gramos con un *Titanosaurio* de 40.000 kg?
+Utilizamos el **Número de Froude (Fr)**, una constante adimensional que define la dinámica del paso:
+> **Fr = v² / (g * l)**
+*(v = velocidad; g = gravedad; l = longitud de la extremidad)*
+
+### Leyes de Marcha:
+1. **Paso Caminante:** Generalmente ocurre cuando Fr < 0.5.
+2. **Paso Corredor:** Ocurre cuando Fr > 0.5. 
+3. **Escalamiento:** Animales de tamaños dispares que se mueven con el mismo Fr presentan patrones de marcha dinámicamente similares. Esto significa que el "salto" (bounding) del *Ameghinichnus* tiene paralelos mecánicos en mamíferos modernos de mayor porte, lo que nos permite validar su interpretación dinámica sobre la piedra.
+
+---
+
+## 4. La Cola: El Estabilizador de Momento Angular
+En terópodos depredadores como el *Abelisaurio*, la cola no era un lastre inerte.
+- **Propulsión:** El músculo *caudofemoralis longus* conectaba la cola con el fémur, proporcionando la fuerza principal para la retracción de la pierna.
+- **Equilibrio Dinámico (Wagging):** Simulaciones computacionales recientes han demostrado que el movimiento lateral de la cola (coleo) contrarrestaba el momento angular del cuerpo al correr. Esto reducía el esfuerzo muscular de estabilización en un **18%**, permitiendo velocidades de sprint significativamente mayores.
+
+---
+
+## 5. Tafonomía de la Decisión: El Underprint
+Lo que el visitante pisa en la sala principal es el resultado de un proceso de **Estratigrafía Biogénica**.
+- **Underprints (Huellas de bajo relieve):** No son la superficie real que tocó el animal, sino el "eco" de la presión transmitido a capas inferiores del sedimento. En la laja Ameghinichnus, la lluvia volcánica saturó el fango, permitiendo que la presión de los pequeños pies de 100g se transmitiera con fidelidad milimétrica a través de capas de ceniza fina.
+- **Experimental Ichnology:** Mediante el uso de modelos a escala y fluidos análogos, hemos recreado las condiciones de la laja, confirmando que la alternancia entre caminar y saltar que se ve en el rastro es una respuesta a la cohesión del barro durante la tormenta jurásica.

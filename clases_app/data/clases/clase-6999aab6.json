@@ -1,0 +1,79 @@
+{
+  "id": "clase-6999aab6",
+  "titulo": "dds",
+  "subtitulo": "",
+  "materia": "Herramientas Digitales",
+  "resumen": "",
+  "objetivos": [],
+  "etiquetas": [],
+  "portada": "",
+  "autor": "",
+  "createdAt": "2026-03-12T12:41:06.332Z",
+  "updatedAt": "2026-03-12T12:41:06.332Z",
+  "estado": "borrador",
+  "bloques": [
+    {
+      "tipo": "portada",
+      "propiedades": {
+        "titulo": "Título de la clase",
+        "subtitulo": "Actividad práctica",
+        "autor": "",
+        "materia": ""
+      }
+    },
+    {
+      "tipo": "texto-intro",
+      "propiedades": {
+        "titulo": "Objetivos de la práctica",
+        "contenido": "Qué se espera lograr con esta actividad."
+      }
+    },
+    {
+      "tipo": "texto-columnas",
+      "propiedades": {
+        "titulo": "Marco teórico",
+        "columnaIzquierda": "Conceptos clave...",
+        "columnaDerecha": "Definiciones importantes..."
+      }
+    },
+    {
+      "tipo": "actividad",
+      "propiedades": {
+        "titulo": "Actividad práctica",
+        "consigna": "Descripción de la actividad.",
+        "tiempo": "30 minutos",
+        "materiales": [],
+        "grupal": true
+      }
+    },
+    {
+      "tipo": "quiz",
+      "propiedades": {
+        "pregunta": "Pregunta de evaluación",
+        "opciones": [
+          {
+            "texto": "Opción A",
+            "correcta": false
+          },
+          {
+            "texto": "Opción B",
+            "correcta": true
+          },
+          {
+            "texto": "Opción C",
+            "correcta": false
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "cierre",
+      "propiedades": {
+        "titulo": "Cierre",
+        "resumen": "Síntesis de la práctica.",
+        "conceptosClave": [],
+        "proximaClase": ""
+      }
+    }
+  ]
+}

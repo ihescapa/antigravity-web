@@ -1,0 +1,38 @@
+{
+  "id": "dia1-bloque1",
+  "titulo": "Día 1 - Bloque 1",
+  "subtitulo": "Introducción y Herramientas",
+  "materia": "Herramientas Digitales",
+  "resumen": "Primera parte del Día 1 enfocada en herramientas digitales",
+  "objetivos": [
+    "Introducir las herramientas del curso",
+    "Comprender la dinámica de trabajo"
+  ],
+  "etiquetas": [
+    "introduccion",
+    "bloque1"
+  ],
+  "autor": "Ignacio Escapa",
+  "createdAt": "2026-03-10T20:05:00.000Z",
+  "updatedAt": "2026-03-10T20:05:00.000Z",
+  "estado": "lista",
+  "bloques": [
+    {
+      "id": "b-port",
+      "tipo": "portada",
+      "propiedades": {
+        "titulo": "Día 1 - Bloque 1",
+        "subtitulo": "Herramientas Digitales",
+        "materia": "Herramientas Digitales"
+      }
+    },
+    {
+      "id": "b-pdf",
+      "tipo": "pdf",
+      "propiedades": {
+        "titulo": "Presentación del Día 1",
+        "src": "/pdfs/dia1-bloque1.pdf"
+      }
+    }
+  ]
+}

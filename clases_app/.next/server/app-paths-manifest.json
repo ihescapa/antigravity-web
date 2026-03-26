@@ -1,0 +1,11 @@
+{
+  "/materias/[materia]/page": "app/materias/[materia]/page.js",
+  "/clases/[id]/presentar/page": "app/clases/[id]/presentar/page.js",
+  "/page": "app/page.js",
+  "/clases/nueva/page": "app/clases/nueva/page.js",
+  "/api/clases/route": "app/api/clases/route.js",
+  "/api/clases/[id]/route": "app/api/clases/[id]/route.js",
+  "/clases/[id]/editar/page": "app/clases/[id]/editar/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/materias/route": "app/api/materias/route.js"
+}

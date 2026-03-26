@@ -1,0 +1,27 @@
+# Bóveda de Prompts: Arte y Visuales ARK-V11.1
+
+Estos prompts están diseñados para generar activos de visualización de alta calidad (8k, Cinema 4D, Estética Premium) para cada sector de la muestra.
+
+## Estética General: "Nano Banana Core"
+> **Palette:** Midnight black, polished brass, laser-sharp white light.
+> **Philosophy:** Scientific precision meets luxury minimalism.
+
+---
+
+### SALA 1: EL UMBRAL
+> **Prompt:** `Cinema 4D render of a dark museum entrance, a massive slab of laser-cut Corten steel with glowing golden text 'LA BATALLA DEL MOVIMIENTO', atmospheric smoke, volumetric lighting, 8k resolution, architectural photography style, moody, museum lighting.`
+
+### SALA 2: LABORATORIO ANALÓGICO
+> **Prompt:** `Extreme close-up of brass mechanical gears and 3D printed resin bones of a Carnotaurus, steampunk scientific aesthetic, macro photography, shallow depth of field, blueprint overlays, technical museum display, high density detail, golden hour scientific lighting.`
+
+### SALA 3: EL CÓDIGO (BIOMECÁNICA)
+> **Prompt:** `Digital visualization of force vectors and kinetic energy lines emerging from a running dinosaur footprint in mud, neon amber vector lines, 3D floor projection, data visualization art, sleek, dark environment, technological precision, 8k.`
+
+### SALA 4: ANATOMÍA (PODIOS)
+> **Prompt:** `Museum display showing a suspended skeletal foot of a Titanosaur above its fossilized footprint, ultra-realistic textures, spotlight lighting, white void background, high-end museum curation, 8k resolution, minimalist, scientific specimen photography.`
+
+### SALA 5: EL CLÍMAX (MAPPING LAJA)
+> **Prompt:** `Cinematic wide shot of a 5-meter fossil slab illuminated by dynamic mapping projections showing ethereal blue silhouettes of tiny mammals running across it, rainy Jurassic forest atmosphere at sunset, volcanic ash particles in the air, 8k, photorealistic, epic scale.`
+
+### SALA 6: EL ECO (SALIDA)
+> **Prompt:** `Abstract projection of human footprints merging with prehistoric Ameghinichnus tracks in a dark hallway, glowing golden sand effect, transition from past to future, poetic cinematography, high contrast, 8k.`

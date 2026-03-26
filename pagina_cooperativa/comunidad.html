@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad Gondwana - Espacio Exclusivo</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@800&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Overlay Background Effects -->
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <header id="main-header" class="scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo-gondwana.png" alt="Gondwana Logo">
+            </a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Salir del Portal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="padding-top: 15vw;">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <p class="text-mono">Bienvenido/a a la red [GNDW-CORE]</p>
+                <h1 class="reveal-up">Portal de <span class="text-gradient">Socios y Amigos</span></h1>
+                <p class="subtitle">Este es un espacio de construcción colectiva. Aquí compartiremos actas, estatutos y
+                    documentos internos que hacen a la vida de nuestra cooperativa.</p>
+            </div>
+
+            <div class="grid cards-grid">
+                <div class="glass-card service-card reveal-up">
+                    <div class="text-mono">Documentación</div>
+                    <h3>Estatuto Social</h3>
+                    <p>Nuestra base legal y valores fundacionales. Descargá el documento completo para entender cómo nos
+                        organizamos.</p>
+                    <a href="#" class="btn-secondary" style="margin-top: auto; font-size: 0.7rem;">Descargar PDF</a>
+                </div>
+
+                <div class="glass-card service-card reveal-up delay-1">
+                    <div class="text-mono">Administración</div>
+                    <h3>Actas de Asamblea</h3>
+                    <p>Accedé a los registros de nuestras últimas reuniones y decisiones colectivas. Transparencia
+                        cooperativa.</p>
+                    <a href="#" class="btn-secondary" style="margin-top: auto; font-size: 0.7rem;">Explorar Actas</a>
+                </div>
+
+                <div class="glass-card service-card reveal-up delay-2">
+                    <div class="text-mono">Recursos</div>
+                    <h3>Assets para Aliados</h3>
+                    <p>Logos, tipografías y materiales de prensa para que nuestros amigos de la casa puedan difundir
+                        nuestra misión.</p>
+                    <a href="#" class="btn-secondary" style="margin-top: auto; font-size: 0.7rem;">Ver Repositorio</a>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 4rem; padding: 2rem; background: var(--clr-bg-surface); border-radius: var(--radius-lg); border: 1px dashed var(--clr-tertiary);">
+                <h3 style="color: var(--clr-tertiary); margin-bottom: 1rem;">Novedades Internas</h3>
+                <p>Próxima asamblea: 15 de marzo de 2026. ¡Te esperamos para seguir construyendo Ciencia y Arte desde la
+                    Patagonia!</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Additional protection just in case
+        if (sessionStorage.getItem('gondwana_auth') !== 'true') {
+            window.location.href = 'socios.html';
+        }
+    </script>
+</body>
+
+</html>

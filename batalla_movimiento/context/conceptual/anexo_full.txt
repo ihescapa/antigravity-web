@@ -1,0 +1,114 @@
+Pestaña 1
+Conceptos, referencias y desarrollos previos
+Se incluyen en esta sección algunos desarrollos previos realizados por el grupo de trabajo
+que conforma este proyecto, como referencia.
+
+
+Instalaciones (sin movimiento)
+​
+Estructuras oseas particulares
+
+Piezas Tradicionales
+**Modelo 3D de Carnotaurus: Integración de Estructura Ósea y Reconstrucción en Vida
+para Automátas/Zootropos**
+
+El modelo 3D de la cabeza de Carnotaurus Sastrei que utilizamos en nuestra propuesta es
+una representación detallada que combina la estructura ósea fósil con una reconstrucción
+en vida. Este enfoque nos permite crear modelos que no solo respetan la anatomía de la
+especie, sino que también brindan una base sólida para el diseño de automátas y zootropos
+3D de movimiento.
+
+El Carnotaurus Sastrei, conocido por sus cuernos, utilizaba estos apéndices en combates
+que implicaban fuertes golpes. La estructura de sus vértebras, especialmente la articulación
+entre las cervicales y dorsales, está diseñada para resistir los impactos de tales
+movimientos. Al integrar estos detalles en nuestros modelos, garantizamos que los
+automátas/zootropos no solo sean visualmente precisos, sino también dinámicos y
+funcionales, permitiendo simular de forma auténtica los movimientos de la especie en su
+hábitat natural.
+
+
+
+Instalaciones con movimiento (analógicas)
+
+Instalaciones con movimiento (digitales)
+Reconstrucciones anatómicas y autómatas
+​
+Los autómatas serán desarrollados por el Area de Modelado 3D del MEF, a cargo de Ethel
+Dening. Este area cuenta con un amplio archivo, en constante crecimiento y actualización,
+de modelos de dinosaurios y otros organismos. ​
+​
+ETHEL PONER FOTOS DE BICHOS ETC ACA​
+
+Dening cuenta con experiencia también en el desarrollo de mecanismos para autómatas,
+habiendo desarrollado previamente modelos actividades lúdicas y educativas del MEF. Si
+bien este automata no será utilizado en el marco de este proyecto, representa un ejemplo
+en relación a los modelos que serán desarrollados. ​
+
+
+
+
+Ejemplo: Autómata Plesiosaurio Nadando
+
+El autómata de plesiosaurio ha sido diseñado para simular de manera dinámica el
+movimiento de nado de esta especie prehistórica. Utilizando un sistema de engranajes
+accionados por una manilla giratoria, el mecanismo permite al usuario interactuar
+manualmente para activar el movimiento. Al girar la manilla, los engranajes trasladan el
+movimiento a las aletas y al cuello del plesiosaurio, replicando con precisión los
+movimientos de nado, como el batir de las aletas y la flexión del cuello.
+
+Este diseño emplea materiales plásticos impresos en 3D, aunque también es adaptable
+para otros materiales, dependiendo de las necesidades específicas del proyecto o de la
+exhibición.
+
+
+
+
+**Modelo 3D de Carnotaurus: Integración de Estructura Ósea y Reconstrucción en Vida
+para Automátas/Zootropos**
+
+El modelo 3D de la cabeza de Carnotaurus Sastrei que utilizamos en nuestra propuesta es
+una representación detallada que combina la estructura ósea fósil con una reconstrucción
+en vida. Este enfoque nos permite crear modelos que no solo respetan la anatomía de la
+especie, sino que también brindan una base sólida para el diseño de automátas y zootropos
+3D de movimiento.
+
+El Carnotaurus Sastrei, conocido por sus cuernos, utilizaba estos apéndices en combates
+que implicaban fuertes golpes. La estructura de sus vértebras, especialmente la articulación
+entre las cervicales y dorsales, está diseñada para resistir los impactos de tales
+movimientos. Al integrar estos detalles en nuestros modelos, garantizamos que los
+automátas/zootropos no solo sean visualmente precisos, sino también dinámicos y
+funcionales, permitiendo simular de forma auténtica los movimientos de la especie en su
+hábitat natural.
+ZOOTROPOS​
+​
+Un zootropo tradicional es un cilindro con ranuras en su superficie y una serie de imágenes
+secuenciales colocadas en su interior. Al girar el cilindro y mirar a través de las ranuras, se
+produce una ilusión de movimiento gracias al efecto de persistencia de la visión. Cada
+imagen representa una fase distinta de un movimiento, y las ranuras permiten que el ojo
+perciba cada imagen como un fotograma de una animación fluida.
+
+El zootropo 3D lleva este principio al siguiente nivel al reemplazar las imágenes
+bidimensionales por figuras tridimensionales, en este caso mediante la impresión en resina.
+Estas figuras, dispuestas en secuencia circular, representan los cuadros de una animación.
+Al girar el zootropo, una luz estroboscópica, que parpadea a una frecuencia exacta,
+sincroniza la visión con las posiciones de las figuras, creando la ilusión de que las
+esculturas cobran vida y se mueven. Este efecto combina precisión técnica y arte,
+ofreciendo una experiencia visual fascinante y moderna.
+
+Zootropo 3D de Eoraptor: Ilusión de Movimiento a través de Mecánica e Iluminación
+
+Reciemente se comenzó el modelado de un zootropo 3D que representa a un Eoraptor en
+movimiento, mostrando su carrera ágil mediante una secuencia de posturas que simulan la
+locomoción de la especie. Este zootropo está basado en un sistema mecánico, impulsado
+por un motor que activa la base redonda giratoria que sostiene las figuras del Eoraptor.
+
+El sistema de iluminación estroboscópica, sincronizado con el giro de la base, es esencial
+para lograr el efecto de animación, en el que cada figura aparece en rápida sucesión,
+simulando la carrera del dinosaurio.
+
+Este enfoque mecánico permite no solo una visualización dinámica de los movimientos, sino
+también una experiencia educativa e interactiva para el público. En el marco de este
+proyecto se desarrollarán zootropos más complejos, con varias capas/escenas ocurriendo
+en el mismo mecanismo.
+Pestaña 2
+

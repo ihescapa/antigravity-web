@@ -1,0 +1,245 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/app/clases/nueva/page.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+.page_container__WR8s7 {
+    padding: var(--space-8) var(--space-10);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page_header__Rf1AR {
+    margin-bottom: var(--space-10);
+    text-align: center;
+}
+
+.page_title__ByWPh {
+    font-family: var(--font-serif);
+    font-size: var(--fs-4xl);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.page_subtitle__haWO_ {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+}
+
+.page_optionsGrid__LZ6Q7 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: var(--space-6);
+    gap: var(--space-6);
+}
+
+.page_optionCard__SPLsI {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-6);
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.page_optionCard__SPLsI:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent);
+}
+
+.page_iconWrapper__AKiuz {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+}
+
+.page_optionCard__SPLsI h2 {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-2);
+}
+
+.page_optionCard__SPLsI p {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+}
+
+.page_arrow__ps4_V {
+    position: absolute;
+    bottom: var(--space-4);
+    color: var(--color-text-muted);
+    transition: color var(--transition);
+}
+
+.page_optionCard__SPLsI:hover .page_arrow__ps4_V {
+    color: var(--color-accent);
+}
+
+/* Forms */
+.page_formContainer__fdQvc {
+    background: var(--color-bg-card);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    position: relative;
+}
+
+.page_backBtn__L5zng {
+    position: absolute;
+    top: var(--space-8);
+    right: var(--space-8);
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.page_backBtn__L5zng:hover {
+    color: var(--color-text-primary);
+}
+
+.page_formContainer__fdQvc h2 {
+    margin-bottom: var(--space-6);
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+}
+
+.page_helperText__A41Bp {
+    background: var(--color-gold-light);
+    color: var(--color-warning);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    font-size: var(--fs-sm);
+}
+
+.page_formGroup__NxYw3 {
+    margin-bottom: var(--space-6);
+}
+
+.page_formGroup__NxYw3 label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+}
+
+.page_formGroup__NxYw3 input[type="text"],
+.page_formGroup__NxYw3 textarea,
+.page_formGroup__NxYw3 select {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    transition: border-color var(--transition);
+}
+
+.page_formGroup__NxYw3 input:focus,
+.page_formGroup__NxYw3 textarea:focus,
+.page_formGroup__NxYw3 select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.page_templateGrid__tTmiO {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: var(--space-4);
+    gap: var(--space-4);
+}
+
+.page_templateOption__HHGl2 {
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    cursor: pointer;
+    transition: all var(--transition);
+    display: block;
+}
+
+.page_templateOption__HHGl2.page_selected__jM8vP {
+    border-color: var(--color-accent);
+    background: var(--color-accent-light);
+}
+
+.page_templateOption__HHGl2 input[type="radio"] {
+    display: none;
+}
+
+.page_templateOption__HHGl2 h4 {
+    margin-bottom: var(--space-1);
+    color: var(--color-text-primary);
+}
+
+.page_templateOption__HHGl2 p {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+}
+
+.page_submitBtn__QYQQw {
+    width: 100%;
+    padding: var(--space-4);
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.page_submitBtn__QYQQw:hover:not(:disabled) {
+    background: var(--color-accent-hover);
+}
+
+.page_submitBtn__QYQQw:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page_subjectSelection__W4Ntn {
+    margin-top: var(--space-1);
+}
+
+.page_subjectDropdownRow___pFpB,
+.page_subjectInputRow__aBBUz {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.page_subjectDropdownRow___pFpB select,
+.page_subjectInputRow__aBBUz input {
+    flex: 1 1;
+}
+
+.page_textBtn__izmty {
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: var(--space-2);
+}
+
+.page_textBtn__izmty:hover {
+    text-decoration: underline;
+}

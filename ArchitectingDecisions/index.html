@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecting Decisions | Inteligencia de Ingeniería</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.292.0/dist/umd/lucide.min.js"></script>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1>Arquitecturas <span class="version-badge">v1.0</span></h1>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">Modelado de decisiones y
+                automatización</p>
+        </div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label
+                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; display: block;">Descripción
+                    del Proyecto</label>
+                <textarea id="project-description"
+                    placeholder="Describe tu proyecto aquí para generar una propuesta inicial..."></textarea>
+            </div>
+            <button id="generate-btn">Generar Arquitectura</button>
+
+            <div style="margin-top: 40px;">
+                <button id="show-metrics-btn" style="background: transparent; border: 1px solid var(--border);">Ver
+                    Evaluación de Modelos</button>
+                <button id="export-json-btn"
+                    style="background: transparent; border: 1px solid var(--border); margin-top: 10px;">Exportar
+                    Proyecto (JSON)</button>
+            </div>
+        </div>
+
+        <div style="margin-top: auto; padding: 20px; border-top: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="auto-save-status" style="font-size: 0.7rem; color: var(--text-secondary);">Autoguardado:
+                    Activo</span>
+                <i data-lucide="shield-check" style="width: 14px; color: var(--success);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <main id="canvas-container">
+        <!-- SVG for connections -->
+        <svg id="connections-layer" class="connection-svg"></svg>
+        <!-- Nodes will be injected here -->
+        <div id="canvas-inner" style="width: 5000px; height: 5000px; position: absolute; top: 0; left: 0;"></div>
+
+        <div id="canvas-controls"
+            style="position: absolute; bottom: 24px; right: 24px; display: flex; gap: 10px; z-index: 50;">
+            <button class="zoom-btn" style="width: 40px; height: 40px; padding: 0;">+</button>
+            <button class="zoom-btn" style="width: 40px; height: 40px; padding: 0;">-</button>
+            <button id="recenter-btn" style="width: auto; padding: 0 16px;">Recentrar</button>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="metrics-overlay" class="overlay">
+        <div class="modal">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h2>Evaluación de Modelos de IA</h2>
+                <button class="close-modal"
+                    style="width: auto; background: transparent; color: var(--text-secondary);">Cerrar (Esc)</button>
+            </div>
+            <table id="metrics-table">
+                <thead>
+                    <tr>
+                        <th>Modelo</th>
+                        <th>Tarea</th>
+                        <th>Benchmark</th>
+                        <th>Score</th>
+                        <th>Actualización</th>
+                        <th style="width: 200px;">Notas Críticas</th>
+                    </tr>
+                </thead>
+                <tbody id="metrics-tbody">
+                    <!-- Rows injected via JS -->
+                </tbody>
+            </table>
+            <button id="add-model-btn"
+                style="margin-top: 24px; background: var(--bg-primary); border: 1px solid var(--border); width: auto;">+
+                Agregar Modelo</button>
+        </div>
+    </div>
+
+    <!-- Details Panel (Hidden by default) -->
+    <div id="details-panel" class="glass"
+        style="position: absolute; top: 24px; right: 24px; width: 300px; border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: none; z-index: 60;">
+        <h3 id="detail-title">Nombre del Bloque</h3>
+        <p id="detail-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin: 12px 0;"></p>
+        <div id="detail-extra"></div>
+        <button class="close-details"
+            style="margin-top: 12px; background: transparent; border: 1px solid var(--border);">Cerrar Detalles</button>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+# Ecología del Jurásico: El Escenario de La Matilde (v11.1)
+**Fuente de Autoridad:** Archangelsky (2005) - "La Paleobotánica en Argentina".
+
+## 1. El Clima del Gondwana Central
+Hace 165 millones de años, la región de lo que hoy es Santa Cruz no era la estepa árida que conocemos. Formaba parte de una amplia planicie costera con un clima **templado-cálido y estacionalmente húmedo**. La proximidad de la Cordillera de los Andes en formación generaba una actividad volcánica constante, lo que dictaba la vida y la muerte en el ecosistema.
+
+## 2. El Soberano: Bosque de Araucariáceas
+La flora estaba dominada por coníferas gigantes. El género *Araucaria* (similar a la actual *Araucaria araucana*) formaba densas selvas con ejemplares que superaban los 40 metros de altura.
+- **Micro-hábitats:** Bajo el dosel de las araucarias, proliferaban helechos arborescentes y podocarpáceas, creando una "alfombra" vegetal densa.
+- **Obstáculos a la Locomoción:** Grandes raíces convergentes y troncos caídos (muchos de los cuales se preservaron como troncos petrificados en posición de vida) obligaban a los animales pequeños a desarrollar gaitas de alta agilidad. El "salto" del *Ameghinichnus* era probablemente una respuesta adaptativa para cruzar estos obstáculos rápidamente.
+
+## 3. El Evento de la Laja: Lluvia y Ceniza
+La laja de 5 metros es el registro de un evento específico:
+- **Sedimentación:** La ceniza volcánica (toba) caía regularmente desde el oeste. Estas cenizas, al mezclarse con la lluvia intensa, formaban un fango de granulometría ultra-fina, casi plástico.
+- **Tafonomía:** Esta mezcla actuaba como un material de impresión perfecto. La alta cohesión del fango permitía que incluso animales de 100 gramos dejaran huellas profundas y detalladas que no se borraban con la lluvia, sino que se "sellaban" con nuevas capas de ceniza seca.
+
+## 4. Interacción Fauna-Flora
+- **Herbivoría:** Los pequeños *Manidens* utilizaban sus dientes especializados para procesar las semillas ricas en energía de las araucarias (piñones jurásicos).
+- **Refugio:** La arquitectura de las araucarias proporcionaba refugio vertical. Nuestra investigación sugiere que la capacidad prensil de los pequeños vertebrados de la muestra estaba ligada a un modo de vida transicional entre el suelo y las ramas.
+
+---
+Este contexto ecológico se utiliza en la exhibición para ambientar las proyecciones mapping, recreando el sonido del viento entre las coníferas y la luz filtrada por el dosel volcánico.

@@ -1,0 +1,181 @@
+[
+    {
+        "id": "plantilla-001",
+        "nombre": "Clase estándar",
+        "descripcion": "Estructura básica para una clase académica: portada, introducción, desarrollo y cierre.",
+        "categoria": "General",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "bloques": [
+            {
+                "tipo": "portada",
+                "propiedades": {
+                    "titulo": "Título de la clase",
+                    "subtitulo": "Subtítulo o tema principal",
+                    "autor": "",
+                    "materia": ""
+                }
+            },
+            {
+                "tipo": "texto-intro",
+                "propiedades": {
+                    "titulo": "Introducción",
+                    "contenido": "Presentación del tema, contexto y motivación."
+                }
+            },
+            {
+                "tipo": "texto-intro",
+                "propiedades": {
+                    "titulo": "Desarrollo",
+                    "contenido": "Contenido principal de la clase."
+                }
+            },
+            {
+                "tipo": "pregunta",
+                "propiedades": {
+                    "pregunta": "Pregunta disparadora",
+                    "contexto": "Contexto para la reflexión.",
+                    "sugerencias": []
+                }
+            },
+            {
+                "tipo": "cierre",
+                "propiedades": {
+                    "titulo": "Cierre",
+                    "resumen": "Síntesis de los contenidos trabajados.",
+                    "conceptosClave": [],
+                    "proximaClase": ""
+                }
+            }
+        ]
+    },
+    {
+        "id": "plantilla-002",
+        "nombre": "Clase con actividad práctica",
+        "descripcion": "Estructura para clases que incluyen una actividad grupal o de laboratorio.",
+        "categoria": "Práctica",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "bloques": [
+            {
+                "tipo": "portada",
+                "propiedades": {
+                    "titulo": "Título de la clase",
+                    "subtitulo": "Actividad práctica",
+                    "autor": "",
+                    "materia": ""
+                }
+            },
+            {
+                "tipo": "texto-intro",
+                "propiedades": {
+                    "titulo": "Objetivos de la práctica",
+                    "contenido": "Qué se espera lograr con esta actividad."
+                }
+            },
+            {
+                "tipo": "texto-columnas",
+                "propiedades": {
+                    "titulo": "Marco teórico",
+                    "columnaIzquierda": "Conceptos clave...",
+                    "columnaDerecha": "Definiciones importantes..."
+                }
+            },
+            {
+                "tipo": "actividad",
+                "propiedades": {
+                    "titulo": "Actividad práctica",
+                    "consigna": "Descripción de la actividad.",
+                    "tiempo": "30 minutos",
+                    "materiales": [],
+                    "grupal": true
+                }
+            },
+            {
+                "tipo": "quiz",
+                "propiedades": {
+                    "pregunta": "Pregunta de evaluación",
+                    "opciones": [
+                        {
+                            "texto": "Opción A",
+                            "correcta": false
+                        },
+                        {
+                            "texto": "Opción B",
+                            "correcta": true
+                        },
+                        {
+                            "texto": "Opción C",
+                            "correcta": false
+                        }
+                    ]
+                }
+            },
+            {
+                "tipo": "cierre",
+                "propiedades": {
+                    "titulo": "Cierre",
+                    "resumen": "Síntesis de la práctica.",
+                    "conceptosClave": [],
+                    "proximaClase": ""
+                }
+            }
+        ]
+    },
+    {
+        "id": "plantilla-003",
+        "nombre": "Exposición con imágenes",
+        "descripcion": "Ideal para clases con fuerte componente visual: fotografías, diagramas o ilustraciones.",
+        "categoria": "Visual",
+        "createdAt": "2026-01-01T00:00:00Z",
+        "bloques": [
+            {
+                "tipo": "portada",
+                "propiedades": {
+                    "titulo": "Título de la clase",
+                    "subtitulo": "Subtítulo",
+                    "autor": "",
+                    "materia": ""
+                }
+            },
+            {
+                "tipo": "texto-intro",
+                "propiedades": {
+                    "titulo": "Introducción",
+                    "contenido": "Contexto y presentación del material visual."
+                }
+            },
+            {
+                "tipo": "imagen",
+                "propiedades": {
+                    "src": "",
+                    "epigrafe": "Epígrafe de la imagen principal",
+                    "tamano": "grande",
+                    "posicion": "centro"
+                }
+            },
+            {
+                "tipo": "galeria",
+                "propiedades": {
+                    "titulo": "Galería de imágenes",
+                    "imagenes": []
+                }
+            },
+            {
+                "tipo": "pregunta",
+                "propiedades": {
+                    "pregunta": "¿Qué observás en estas imágenes?",
+                    "contexto": "Reflexión a partir del material visual.",
+                    "sugerencias": []
+                }
+            },
+            {
+                "tipo": "cierre",
+                "propiedades": {
+                    "titulo": "Cierre",
+                    "resumen": "Síntesis y conceptos clave.",
+                    "conceptosClave": [],
+                    "proximaClase": ""
+                }
+            }
+        ]
+    }
+]

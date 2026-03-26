@@ -1,0 +1,56 @@
+{
+  "id": "clase-1d67b131",
+  "titulo": "sarasa",
+  "subtitulo": "",
+  "materia": "Herramientas Digitales",
+  "resumen": "",
+  "objetivos": [],
+  "etiquetas": [],
+  "portada": "",
+  "autor": "",
+  "createdAt": "2026-03-11T02:52:46.950Z",
+  "updatedAt": "2026-03-11T02:52:46.950Z",
+  "estado": "borrador",
+  "bloques": [
+    {
+      "tipo": "portada",
+      "propiedades": {
+        "titulo": "Título de la clase",
+        "subtitulo": "Subtítulo o tema principal",
+        "autor": "",
+        "materia": ""
+      }
+    },
+    {
+      "tipo": "texto-intro",
+      "propiedades": {
+        "titulo": "Introducción",
+        "contenido": "Presentación del tema, contexto y motivación."
+      }
+    },
+    {
+      "tipo": "texto-intro",
+      "propiedades": {
+        "titulo": "Desarrollo",
+        "contenido": "Contenido principal de la clase."
+      }
+    },
+    {
+      "tipo": "pregunta",
+      "propiedades": {
+        "pregunta": "Pregunta disparadora",
+        "contexto": "Contexto para la reflexión.",
+        "sugerencias": []
+      }
+    },
+    {
+      "tipo": "cierre",
+      "propiedades": {
+        "titulo": "Cierre",
+        "resumen": "Síntesis de los contenidos trabajados.",
+        "conceptosClave": [],
+        "proximaClase": ""
+      }
+    }
+  ]
+}

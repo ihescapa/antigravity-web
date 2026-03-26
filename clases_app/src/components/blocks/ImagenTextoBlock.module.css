@@ -1,0 +1,213 @@
+.previewWrapper {
+    display: flex;
+    gap: var(--space-8);
+    align-items: center;
+    width: 100%;
+}
+
+.layoutIzquierda {
+    flex-direction: row;
+}
+
+.layoutDerecha {
+    flex-direction: row-reverse;
+}
+
+.imageCol {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.textCol {
+    flex: 1;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-3xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-4);
+    line-height: 1.2;
+}
+
+.textContent {
+    font-size: var(--fs-lg);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    white-space: pre-wrap;
+}
+
+/* EDITOR STYLES */
+
+.editorWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    width: 100%;
+}
+
+.controlsBar {
+    display: flex;
+    background: var(--color-bg);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.controlLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.select {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-xs);
+    background: white;
+}
+
+.editorGrid {
+    display: flex;
+    gap: var(--space-6);
+}
+
+.editorImageCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.editorTextCol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.imageContainer {
+    width: 100%;
+    background: #f1f5f9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+}
+
+.uploadPlaceholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.uploadPlaceholder:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.imageControls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.changeBtn {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.changeBtn:hover {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.inputGroup label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+}
+
+.textInput,
+.titleInput,
+.textArea {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    font-family: inherit;
+}
+
+.titleInput {
+    font-weight: 600;
+}
+
+.textArea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.textInput:focus,
+.titleInput:focus,
+.textArea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* Resp */
+@media (max-width: 768px) {
+
+    .previewWrapper,
+    .editorGrid {
+        flex-direction: column;
+    }
+}

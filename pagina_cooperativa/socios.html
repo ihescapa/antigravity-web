@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Socios - Proyecto Gondwana</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@800&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        .login-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--clr-bg);
+            padding: 2rem;
+        }
+
+        .login-card {
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-card h1 {
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--clr-primary);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--clr-bg-darker);
+            border: 1px solid var(--clr-border);
+            color: white;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+        }
+
+        .input-group input:focus {
+            border-color: var(--clr-primary);
+            outline: none;
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 2rem;
+            color: var(--clr-text-muted);
+            font-size: 0.8rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <section class="login-section">
+        <div class="glass-card login-card">
+            <p class="text-mono">Portal de Comunidad</p>
+            <h1>Acceso <span class="text-gradient">Socios</span></h1>
+            <div class="input-group">
+                <label for="pass-field">Contraseña del Proyecto</label>
+                <input type="password" id="pass-field" placeholder="••••••••"
+                    onkeypress="if(event.key === 'Enter') attemptLogin()">
+            </div>
+            <button class="btn-primary btn-lg" style="width: 100%;" onclick="attemptLogin()">Ingresar</button>
+            <a href="index.html" class="back-home">Volver al inicio</a>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+# Guion Maestro de Cartelería: El Pulso de la Tierra (v11.1)
+
+Este guion es la base narrativa para la impresión de la señalética física y la configuración de las proyecciones mapping.
+
+---
+
+## 🏛️ SALA 1: EL UMBRAL DEL TIEMPO
+**Ubicación:** Acceso principal / Zona de Penumbra.
+**Texto del Cartel:**
+> "Bienvenido al rastro de lo invisible. Bajo tus pies no solo hay piedra; hay un segundo de voluntad congelado hace 160 millones de años. En esta exhibición, el fósil deja de ser un objeto para convertirse en un proceso. Aquí investigamos no lo que los animales ERAN, sino lo que HACÍAN. Prepárate para entrar en la Batalla del Movimiento: la lucha constante de la vida contra la gravedad."
+
+**Sugerencia de Arte:** Cartel de acero corten calado con láser. Iluminación LED cálida (2700K) desde el interior, proyectando el texto sobre el suelo.
+
+---
+
+## 🏛️ SALA 2: EL LABORATORIO ANALÓGICO
+**Ubicación:** Pasillo de Transición / Vitrinas de Modelado.
+**Texto del Cartel:**
+> "¿Cómo entender el movimiento de un gigante que nadie vio? Antes de los píxeles, usamos engranajes. En esta sala verás los autómatas mecánicos de Ethel Dening: máquinas que replican la resistencia cervical del **Carnotaurus** o el batir de aletas del **Plesiosaurio**. Estos mecanismos nos enseñan que la anatomía es, en esencia, ingeniería biológica. El zootropo, con su parpadeo estroboscópico, es nuestra primera máquina del tiempo."
+
+**Sugerencia de Arte:** Gráficos técnicos impresos en acrílico transparente (blueprint style) superpuestos a los modelos físicos.
+
+---
+
+## 🏛️ SALA 3: EL CÓDIGO DE LA ZANCADA
+**Ubicación:** Central / Zona Interactiva.
+**Texto del Cartel:**
+> "La física no perdona escalas. Un mamífero de 100 gramos y un dinosaurio de 40 toneladas responden a las mismas leyes: el **Número de Froude** y la **Similitud Dinámica**. Aquí aprenderás que la cola del Abelisaurio no era un peso muerto, sino un timón activo que le permitía ahorrar un 18% de energía en cada sprint. El movimiento es armonía matemática en el barro."
+
+**Sugerencia de Arte:** Proyección interactiva en el suelo que calcula el Number of Froude del visitante mientras camina por la sala.
+
+---
+
+## 🏛️ SALA 4: ANATOMÍA DEL PASO (LINEAJES)
+**Ubicación:** Galería de Podios.
+**Texto del Cartel (Podio Titán):**
+> "Observa el fémur del Titanosaurio en suspensión. Su forma dictaba una marcha de trocha ancha. Las huellas nos revelan algo que el hueso calla: eran animales sociales. Los rastros demuestran que movían a sus crías en el centro de la formación, creando un pasillo blindado contra depredadores. El rastro es el único fósil del comportamiento social."
+
+**Sugerencia de Arte:** Hueso (réplica) iluminado con spot frío, huella (molde) a nivel de piso iluminada con spot cálido rasante para resaltar texturas.
+
+---
+
+## 🏛️ SALA 5: EL CLÍMAX (LA LAJA DE 5 METROS)
+**Ubicación:** Recinto Final / Mapping Ring.
+**Texto del Cartel:**
+> "Te encuentras frente a una 'foto' real del Jurásico Medio. 5 metros de una tarde de lluvia y ceniza volcánica en el sur de la Patagonia. Lo que ves son más de 2000 huellas de **Ameghinichnus patagonicus**. El mapping de luces re-anima sus pasos: los ves caminar, dudar ante el fango espeso y saltar (bounding) para escapar de la tormenta inminente. No es una simulación; es la reconstrucción exacta de un día que se negó a ser olvidado."
+
+**Sugerencia de Arte:** Texto minimalista en el borde de madera del recinto. Proyección de sombras de araucarias moviéndose sobre la piedra para dar contexto ambiental.
+
+---
+
+## 🏛️ SALA 6: EL ECO DEL MOVIMIENTO (SALIDA)
+**Ubicación:** Puerta de Egreso.
+**Texto del Cartel:**
+> "Tu propio rastro hoy es el heredero de esta historia de milenios. De aquellos pequeños saltos en el barro dependió que tú estés hoy aquí. Moverse es decidir estar vivo. Al salir, recuerda que la batalla por el movimiento continúa en cada uno de tus pasos."
+
+**Sugerencia de Arte:** Sensor de movimiento que activa una proyección de huellas de Ameghinichnus que siguen al visitante mientras camina hacia la salida.

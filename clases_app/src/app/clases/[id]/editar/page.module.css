@@ -1,0 +1,326 @@
+.editorContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--color-bg);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.headerTitle h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.materiaBadge {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+}
+
+.dirtyDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-warning);
+}
+
+.headerActions {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.primaryBtn,
+.secondaryBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: all var(--transition);
+    border: none;
+}
+
+.primaryBtn {
+    background: var(--color-accent);
+    color: white;
+}
+
+.primaryBtn:hover:not(:disabled) {
+    background: var(--color-accent-hover);
+}
+
+.primaryBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.secondaryBtn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.secondaryBtn:hover {
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+}
+
+.mainLayout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
+    background: white;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.panelSection {
+    padding: var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.panelSection h3 {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.categoryGroup {
+    margin-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.categoryGroup:last-child {
+    border-bottom: none;
+}
+
+.categoryTitle {
+    padding: var(--space-2) 0;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    text-transform: uppercase;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.categoryTitle::-webkit-details-marker {
+    display: none;
+}
+
+.categoryTitle::before {
+    content: '→';
+    display: inline-block;
+    transition: transform var(--transition);
+    font-size: 10px;
+}
+
+.categoryGroup[open] .categoryTitle::before {
+    transform: rotate(90deg);
+}
+
+.blockPalette {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    padding: var(--space-2) 0 var(--space-4);
+}
+
+.paletteBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: left;
+}
+
+.paletteBtn:hover {
+    background: var(--color-bg-card);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.metaForm label {
+    display: block;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+}
+
+.metaForm input,
+.metaForm select {
+    width: 100%;
+    margin-top: var(--space-1);
+    padding: var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+.workspace {
+    flex: 1;
+    background: var(--color-bg);
+    overflow-y: auto;
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emptyBlocks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.emptyBlocks h3 {
+    margin-top: var(--space-4);
+    color: var(--color-text-secondary);
+}
+
+.blockList {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-bottom: var(--space-20);
+}
+
+.blockWrapper {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-border);
+    box-shadow: var(--shadow-small);
+    transition: all var(--transition);
+    cursor: pointer;
+}
+
+.blockWrapper:hover {
+    border-color: var(--color-border-hover);
+}
+
+.blockWrapper.selected {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-light);
+}
+
+.blockControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-bg);
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.blockTypeLabel {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.blockActions {
+    display: flex;
+    gap: 4px;
+}
+
+.blockActions button {
+    background: none;
+    border: none;
+    padding: 4px;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.blockActions button:hover:not(:disabled) {
+    background: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.blockActions button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.blockActions button.btnDanger:hover {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+}
+
+.blockPreview {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    overflow: hidden;
+}
+
+.blockHint {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: var(--space-2);
+    background: var(--color-bg);
+    border-top: 1px dashed var(--color-border);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: var(--color-text-secondary);
+}

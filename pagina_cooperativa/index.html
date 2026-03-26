@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gondwana - Ciencia, Arte y Diseño</title>
+    <meta name="description"
+        content="Proyecto Gondwana es una cooperativa para la generación y difusión de productos con base científica desde la Patagonia.">
+    <!-- Google Fonts: Montserrat (Headings) & Inter (Body) & Roboto Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Overlay Background Effects -->
+    <div class="bg-glow blob-1"></div>
+    <div class="bg-glow blob-2"></div>
+
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="logo-gondwana.png" alt="Gondwana Logo" onerror="this.src='LOGO-movil.png'">
+            </a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="fuego.html">Qué Hacemos</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#quienes-somos">Equipo</a></li>
+                    <li><a href="socios.html" class="nav-socios">Socios</a></li>
+                    <li><a href="#contacto" class="btn-primary">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <p class="text-mono reveal-up">Misión Patagonia [43.3° S, 65.1° W]</p>
+                <h1 class="reveal-up">Ciencia, Arte y Diseño <span class="text-gradient">para el Futuro</span></h1>
+                <p class="subtitle reveal-up delay-1">Desarrollamos tecnología y narrativas científicas para rumbear
+                    hacia la sostenibilidad global. Somos una cooperativa multidisciplinaria que transforma el
+                    conocimiento en experiencias tangibles.</p>
+                <div class="hero-actions reveal-up delay-2">
+                    <a href="fuego.html" class="btn-primary btn-lg">Nuestros Procesos</a>
+                    <a href="#productos" class="btn-secondary btn-lg">Catálogo</a>
+                </div>
+            </div>
+            <div class="hero-illustration reveal-up delay-3">
+                <img src="WhatsApp-Image-2024-04-13-at-16.34.58.jpeg" alt="Ilustración Darwin y Naturaleza Patagonia"
+                    class="main-illustration">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Qué Producimos -->
+    <section id="que-hacemos" class="section">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <p class="text-mono">Metodología [A+C+D]</p>
+                <h2 class="section-title">Qué Producimos</h2>
+                <p class="section-subtitle">Cuando las ideas se hacen materia</p>
+            </div>
+            <div class="grid cards-grid">
+                <!-- Card 1 -->
+                <div class="glass-card service-card reveal-up">
+                    <div class="icon-wrap">
+                        <img src="icono_mano-1.png" alt="Mano">
+                    </div>
+                    <h3>Creamos Productos</h3>
+                    <p>Enarbolamos la ciencia, el arte y el diseño como estandartes. Apostamos a la producción local y a
+                        la economía sustentable.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card service-card reveal-up delay-1">
+                    <div class="icon-wrap">
+                        <img src="icono_cabeza.png" alt="Cabeza">
+                    </div>
+                    <h3>Transferimos Narrativas</h3>
+                    <p>Buscamos crear redes en la Economía Popular y sectores públicos/privados, transfiriendo ideas y
+                        conocimiento.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card service-card reveal-up delay-2">
+                    <div class="icon-wrap">
+                        <img src="icono_piernas.png" alt="Piernas">
+                    </div>
+                    <h3>Diseñamos Experiencias</h3>
+                    <p>Diseñamos guiones museológicos, muestras itinerantes y actividades interactivas. Siempre abiertos
+                        a desafiarnos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Showcase (Mini Gallery) -->
+    <section id="productos" class="section bg-darker">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <p class="text-mono">Catálogo de Impacto [v1.0]</p>
+                <h2 class="section-title">Nuestras Creaciones</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card reveal-up"><img src="02-LIBRO-01-1-1024x1024.jpg" alt="Libro"></div>
+                <div class="gallery-item glass-card reveal-up delay-1"><img src="04-BILLETERA-PINGUINO-1024x1024.jpg"
+                        alt="Billetera Pinguino"></div>
+                <div class="gallery-item glass-card reveal-up delay-2"><img src="01-LIBRETAS-DARWIN-1024x1024.jpg"
+                        alt="Libretas Darwin"></div>
+                <div class="gallery-item glass-card reveal-up"><img src="12-PELUCHE-01-1024x1024.jpg" alt="Peluche">
+                </div>
+                <div class="gallery-item glass-card reveal-up delay-1"><img src="15-ESTAMPILLAS-LIO-1024x1024.jpg"
+                        alt="Estampillas"></div>
+                <div class="gallery-item glass-card reveal-up delay-2"><img src="cuadro_lobato-1024x1024.jpg"
+                        alt="Cuadro Lobato"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiénes Somos (Equipo) -->
+    <section id="quienes-somos" class="section">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <p class="text-mono">ADN Cooperativo [GNDW-00]</p>
+                <h2 class="section-title">Quiénes Somos</h2>
+                <p class="section-subtitle">Creemos en la cooperación como herramienta transformadora</p>
+                <p class="team-intro">Proyecto Gondwana es una cooperativa de trabajo compuesta por científicos,
+                    artistas, diseñadores, programadores, comunicadores, productores y gestores, que habitan y aman la
+                    Patagonia. Construimos a partir de los preceptos fundamentales del cooperativismo: ayuda mutua,
+                    responsabilidad, democracia, igualdad, equidad y solidaridad. Nuestra sede en Trelew, Chubut, es el
+                    epicentro donde las historias de millones de años se encuentran con el diseño contemporáneo.</p>
+            </div>
+
+
+            <div class="team-grid">
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="taty.png" alt="Tatiana Kasinsky Aguilera"></div>
+                    <div class="team-info">
+                        <h4>Tatiana Kasinsky Aguilera</h4>
+                        <span class="role">Presidenta / Contenidos Científicos e Ilustración</span>
+                        <p>Dra en Biología, especialista en fauna con el corazón en las aves marinas de la Patagonia.
+                            Ilustradora científica y gran gestora.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="nacho.png" alt="Ignacio Escapa"></div>
+                    <div class="team-info">
+                        <h4>Ignacio Escapa</h4>
+                        <span class="role">Fundador / Contenidos Científicos y Divulgación</span>
+                        <p>Paleobotánico, divulgador, fotógrafo científico. Su mente-ametralladora de ideas es la nafta
+                            que mueve este motor.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="wally.png" alt="Walter Cristian Griffiths"></div>
+                    <div class="team-info">
+                        <h4>Walter Cristian Griffiths</h4>
+                        <span class="role">Arte y Diseño</span>
+                        <p>Artista visual y sonoro. Nuestro Gepetto, los objetos que crea tienen alma. Un poeta que trae
+                            vitamina para el corazón.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="fede.png" alt="Federico Villalba"></div>
+                    <div class="team-info">
+                        <h4>Federico Villalba</h4>
+                        <span class="role">Diseño Gráfico y de exhibiciones</span>
+                        <p>El Mozart del diseño. Su “ojo absoluto” visualiza la perfección en cada detalle y crea
+                            melodías visuales impresionantes.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="martin.png" alt="Martín Perez Patrani"></div>
+                    <div class="team-info">
+                        <h4>Martín Perez Patrani</h4>
+                        <span class="role">Secretario / Gestión Comercial</span>
+                        <p>El gorrión de las ventas. Fanático de los juegos de mesa y la teoría del juego. Él es quien
+                            nos ordena.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="faber.png" alt="Fabricio Polisano"></div>
+                    <div class="team-info">
+                        <h4>Fabricio Polisano</h4>
+                        <span class="role">Diseño Gráfico y Branding</span>
+                        <p>Buscador de la esencia de las ideas, transformándolas en potentes mensajes visuales.
+                            Despabilador permanente.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="anto.png" alt="Antonella Crespo"></div>
+                    <div class="team-info">
+                        <h4>Antonella Crespo</h4>
+                        <span class="role">Arquitectura</span>
+                        <p>Diseña espacios y objetos que ofrecen una experiencia poética, trascendiendo la forma y el
+                            concepto.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="maite.png" alt="Maite Luchelli Fassa"></div>
+                    <div class="team-info">
+                        <h4>Maite Luchelli Fassa</h4>
+                        <span class="role">Locución y Administración</span>
+                        <p>La voz de Proyecto Gondwana. Locutora, actriz y diseñadora de juegos de mesa. Una entusiasta
+                            por naturaleza.</p>
+                    </div>
+                </div>
+                <!-- Miembro -->
+                <div class="team-card glass-card reveal-up">
+                    <div class="avatar-wrap"><img src="antonio.png" alt="Antonio Armada"></div>
+                    <div class="team-info">
+                        <h4>Antonio Armada</h4>
+                        <span class="role">Electrónica y Programación</span>
+                        <p>Inventor. Máquinas de humo, robots interactivos o dispositivos para hablar con plantas. Él lo
+                            hace posible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo-gondwana.png" alt="Gondwana" class="footer-logo">
+                <p>Cooperativa de trabajo.<br>Ciencia, Arte y Diseño desde la Patagonia.</p>
+                <div class="humor-icons">
+                    <img src="ICONOS-NUEVOS.jpg" alt="Iconos de humor Gondwana" class="sticker-icons">
+                    <p class="humor-text">* Ningún dinosaurio fue dañado durante nuestra producción.</p>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contactanos</h4>
+                <p class="footer-info">Trelew, Chubut, Argentina<br>Matrícula Nacional Nº 70197</p>
+                <a href="https://wa.me/" class="whatsapp-btn">
+                    <img src="whatsapp-icon.png" alt="WhatsApp">
+                    Escribinos al WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Proyecto Gondwana. Ciencia y Arte en Movimiento.</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
